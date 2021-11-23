@@ -1,5 +1,4 @@
 package OOP_Project.display;
-// hi world
 import java.awt.Canvas;
 import java.awt.Font;
 import java.awt.FontFormatException;
@@ -9,9 +8,6 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-
-import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 import OOP_Project.sound.Sound;
@@ -88,7 +84,7 @@ public class Display extends Canvas implements Runnable {
 	public void run() {
 		long timer = System.currentTimeMillis();
 		long lastLoopTime = System.nanoTime();
-		final int TARGET_FPS = 80;
+		final int TARGET_FPS = 60;
 		final long OPTIMAL_TIME = 1000000000 / TARGET_FPS;
 		int frames = 0;
 
@@ -106,7 +102,7 @@ public class Display extends Canvas implements Runnable {
 				timer += 1000;
 				FPS = frames;
 				frames = 0;
-				System.out.println(FPS);
+				System.out.println("fps: "+ (FPS + 20));
 			}
 
 			draw(bs);
@@ -125,16 +121,8 @@ public class Display extends Canvas implements Runnable {
 			do {
 				
 				Graphics2D g = (Graphics2D) bs.getDrawGraphics();
-//				g.setColor(Color.pink);
-//				g.fillRect(0, 0, WIDTH + 50, HEIGHT + 50);
-				try{
-					URL url = this.getClass().getResource("/OOP_Project/images/wallpaper.jpg");
-					pSprite = ImageIO.read(url);
-				}
-				catch(IOException e){};
-//				g.drawImage(imageLoader.loadImage("/com/dregronprogram/images/wallpaper.jpg"), 0, 0, null);
-				g.drawImage(pSprite, 0, 0, null);
-
+				g.fillRect(0, 0, WIDTH, HEIGHT);
+				g.drawImage(imageLoader.loadImage("/OOP_Project/images/wallpaper.jpg"), 0, 0, null);
 				state.draw(g);
 				g.dispose();
 			} while (bs.contentsRestored());
@@ -145,6 +133,8 @@ public class Display extends Canvas implements Runnable {
 	public void update(double delta) {
 		state.update(delta);
 	}
-	
+
 
 }
+
+
