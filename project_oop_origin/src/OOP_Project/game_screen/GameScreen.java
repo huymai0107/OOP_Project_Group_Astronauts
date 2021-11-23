@@ -57,26 +57,28 @@ public class GameScreen extends SuperStateMachine {
 	
 	@Override
 	public void draw(Graphics2D g) {
-		g.setFont(new Font("Upheaval TT (BRK)", Font.PLAIN, 14));
+		g.setFont(new Font("Upheaval TT (BRK)", Font.PLAIN, 30));
+		g.setColor(Color.red);
+		g.drawString("Score: " + SCORE, 7, 17);
 		g.setColor(Color.yellow);
-		g.drawString("Score: " + SCORE, 5, 15);
+		g.drawString("Score: " + SCORE, 8, 18);
 		
 		g.setColor(Color.red);
 //		g.drawString("Health: " + player.getHealth(), 5, 35);
 		if(player.getHealth() == 3)
 		{
-			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 5, 20, null);
-			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 20, 20, null);
-			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 35, 20, null);
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 5, Display.HEIGHT - 20, null);
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 25, Display.HEIGHT - 20, null);
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 45, Display.HEIGHT - 20, null);
 		}
 		else if(player.getHealth() == 2)
 		{
-			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 5, 20, null);
-			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 20, 20, null);
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 5, Display.HEIGHT - 20, null);
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 25, Display.HEIGHT - 20, null);
 		}
 		else if(player.getHealth() == 1)
 		{
-			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 5, 20, null);
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 5, Display.HEIGHT - 20, null);
 		}
 
 		
@@ -86,18 +88,25 @@ public class GameScreen extends SuperStateMachine {
 		
 		if (level.isGameOver()) {
 			g.setFont(new Font("Upheaval TT (BRK)", Font.BOLD, 64));
-			g.setColor(Color.red);
+			g.setColor(Color.YELLOW);
 			String gameOver = "GAME OVER!";
 			int gameOverWidth = g.getFontMetrics().stringWidth(gameOver);
 			g.drawString(gameOver, (Display.WIDTH/2)-(gameOverWidth/2), Display.HEIGHT/2);
+			g.setColor(Color.RED);
+			g.drawString(gameOver, (Display.WIDTH/2)-(gameOverWidth/2)+2, (Display.HEIGHT/2)+2);
 		}
 		
 		if (level.isComplete()) {
-			g.setFont(new Font("Upheaval TT (BRK)", Font.BOLD, 64));
-			g.setColor(Color.RED);
+			
+			
+			
+			g.setFont(new Font("Upheaval TT (BRK)", Font.BOLD, 60));
+			g.setColor(Color.CYAN);
 			String complete = "MISSION ACCOMPLISHED!";
 			int completeWidth = g.getFontMetrics().stringWidth(complete);
-			g.drawString(complete, (Display.WIDTH/2)-(completeWidth/2), Display.HEIGHT/2);
+			g.drawString(complete, (Display.WIDTH/2)-(completeWidth/2), (Display.HEIGHT/2));
+			g.setColor(Color.BLUE);
+			g.drawString(complete, (Display.WIDTH/2)-(completeWidth/2)+2, (Display.HEIGHT/2)+2);
 		}
 	}
 

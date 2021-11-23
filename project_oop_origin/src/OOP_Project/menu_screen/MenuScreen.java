@@ -12,6 +12,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
+import javax.swing.JFrame;
+
 import OOP_Project.display.Display;
 import OOP_Project.state.StateMachine;
 import OOP_Project.state.SuperStateMachine;
@@ -37,10 +39,10 @@ public class MenuScreen extends SuperStateMachine implements KeyListener {
 
 		g.setFont(tittleFont);
 		int tittleWidth = g.getFontMetrics().stringWidth(tittle);
+		g.setColor(Color.red);
+		g.drawString(tittle, ((Display.WIDTH/2)-(tittleWidth/2))-2, (Display.HEIGHT/2)-125);
 		g.setColor(Color.yellow);
-		g.drawString(tittle, ((Display.WIDTH/2)-(tittleWidth/2))-2, (Display.HEIGHT/2)-123);
-		g.setColor(Color.green);
-		g.drawString(tittle, (Display.WIDTH/2)-(tittleWidth/2), (Display.HEIGHT/2)-125);
+		g.drawString(tittle, (Display.WIDTH/2)-(tittleWidth/2), (Display.HEIGHT/2)-123);
 		
 		g.setFont(startFont);
 		g.setColor(Color.white);
@@ -62,9 +64,12 @@ public class MenuScreen extends SuperStateMachine implements KeyListener {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		
-		if (e.getKeyCode() == KeyEvent.VK_ENTER) 
+		if (e.getKeyCode() == KeyEvent.VK_ESCAPE) 
 		{
-			
+			System.exit(0);			
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_ENTER)
+		{
 			getStateMachine().setState((byte) 1);
 		}
 	}
