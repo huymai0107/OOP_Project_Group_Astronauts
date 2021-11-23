@@ -24,6 +24,13 @@ public class Display extends Canvas implements Runnable {
 	BufferedImage pSprite;
 	static Font upheavtt;
 	public static void main(String[] args) {
+		try {
+		     GraphicsEnvironment ge = 
+		         GraphicsEnvironment.getLocalGraphicsEnvironment();
+		     ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("Upheaval TT (BRK).ttf")));
+		} catch (IOException|FontFormatException e) {
+		     //Handle exception
+		}
 //		 String fonts[] = 
 //			      GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
 //
