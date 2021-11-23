@@ -25,18 +25,13 @@ public class Display extends Canvas implements Runnable {
 	static Font upheavtt;
 	public static void main(String[] args) {
 		try {
-		     GraphicsEnvironment ge = 
-		         GraphicsEnvironment.getLocalGraphicsEnvironment();
-		     ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("/OOP_Project/Upheaval TT (BRK).ttf")));
-		} catch (IOException|FontFormatException e) {
-		     //Handle exception
-		}
-//		 String fonts[] = 
-//			      GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
-//
-//			    for (int i = 0; i < fonts.length; i++) {
-//			      System.out.println(fonts[i]);
-//			    }
+			GraphicsEnvironment ge = 
+			GraphicsEnvironment.getLocalGraphicsEnvironment();			
+			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("Upheaval TT (BRK).ttf")));
+			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("upheavtt.ttf")));
+	   } catch (IOException|FontFormatException e) {
+			//Handle exception
+	   }
 		Display display = new Display();
 		JFrame frame = new JFrame();
 		frame.add(display);
