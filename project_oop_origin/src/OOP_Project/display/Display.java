@@ -27,7 +27,7 @@ public class Display extends Canvas implements Runnable {
 		try {
 		     GraphicsEnvironment ge = 
 		         GraphicsEnvironment.getLocalGraphicsEnvironment();
-		     ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("Upheaval TT (BRK).ttf")));
+		     ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("/OOP_Project/Upheaval TT (BRK).ttf")));
 		} catch (IOException|FontFormatException e) {
 		     //Handle exception
 		}
