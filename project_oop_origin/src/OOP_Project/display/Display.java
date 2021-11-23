@@ -22,7 +22,6 @@ public class Display extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
 	private static Sound backgroundMusic;
 	BufferedImage pSprite;
-	static Font upheavtt;
 	public static void main(String[] args) {
 		try {
 			GraphicsEnvironment ge = 
