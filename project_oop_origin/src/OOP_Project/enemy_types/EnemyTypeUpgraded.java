@@ -18,7 +18,7 @@ import OOP_Project.timer.Timer;
 public class EnemyTypeUpgraded extends EnemyType{
 
 	private double speed = 1d; 
-	
+	Random random;
 	private Rectangle rect;
 	private SpriteAnimation enemySprite;
 	
@@ -92,25 +92,25 @@ public class EnemyTypeUpgraded extends EnemyType{
 		if(enemySprite.isPlay()) {
 			if(enemys.get(i).deathScene()) {
 				enemys.remove(i);
-	
 			}
+			return false;
 		}
+		
 		for(int w = 0; w < player.playerWeapons.weapons.size(); w++) {
-			if(enemys != null && player.playerWeapons.weapons.get(w).collisionRect(((EnemyTypeUpgraded) enemys.get(i)).getRect())) 
+			if(enemys != null && player.playerWeapons.weapons.get(w).collisionRect(((EnemyTypeUpgraded)enemys.get(i)).getRect())) 
 			{
-					enemySprite.resetLimit();
-					enemySprite.setAnimationSpeed(60);
-					enemySprite.setPlay(true, true);
-					GameScreen.SCORE += 20;
-					return true;
-				
-
+				enemySprite.resetLimit();
+				enemySprite.setAnimationSpeed(60);
+				enemySprite.setPlay(true, true);
+				GameScreen.SCORE += 15 +(int)(Math.random()*((20-15) + 1));
+				return true;
 			}
-			
 		}
 		
 		return false;
 	}
+
+	
 
 	@Override
 	public boolean isOutOfBounds() {

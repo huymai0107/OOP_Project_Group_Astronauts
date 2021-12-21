@@ -2,13 +2,14 @@ package OOP_Project.enemy_types;
 
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+import java.util.Random;
 
 import OOP_Project.game_screen.BasicBlocks;
 import OOP_Project.game_screen.Player;
 import OOP_Project.handler.EnemyBulletHandler;
 
 public abstract class EnemyType {
-	
+
 	private EnemyBulletHandler bulletHandler;
 	
 	public EnemyType(EnemyBulletHandler bulletHandler) {

@@ -3,7 +3,6 @@ package OOP_Project.enemy_bullets;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
-import java.awt.Polygon;
 
 import OOP_Project.display.Display;
 import OOP_Project.game_screen.BasicBlocks;
@@ -27,7 +26,7 @@ public class EnemyUpgradedBullet extends EnemyWeaponType{
 			return;
 		}
 		
-		g.setColor(Color.ORANGE);
+		g.setColor(Color.orange);
 		g.fill(bullet);
 	}
 
@@ -65,7 +64,6 @@ public class EnemyUpgradedBullet extends EnemyWeaponType{
 		for (int w = 0; w < blocks.wall.size(); w++) {
 			if(bullet.intersects(blocks.wall.get(w))) {
 				blocks.wall.remove(w);
-				blocks.wall.remove(w+1);
 				bullet = null;
 				break;
 			}

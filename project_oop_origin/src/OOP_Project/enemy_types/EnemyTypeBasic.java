@@ -18,7 +18,7 @@ import OOP_Project.timer.Timer;
 public class EnemyTypeBasic extends EnemyType{
 
 	private double speed = 0.5d; 
-	
+	Random random;
 	private Rectangle rect;
 	private SpriteAnimation enemySprite;
 	
@@ -102,7 +102,7 @@ public class EnemyTypeBasic extends EnemyType{
 				enemySprite.resetLimit();
 				enemySprite.setAnimationSpeed(60);
 				enemySprite.setPlay(true, true);
-				GameScreen.SCORE += 10;
+				GameScreen.SCORE += 5+(int)(Math.random()*((10-5) + 1));
 				return true;
 			}
 		}
