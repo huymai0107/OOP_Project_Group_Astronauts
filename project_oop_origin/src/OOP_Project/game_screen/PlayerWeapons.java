@@ -2,8 +2,9 @@ package OOP_Project.game_screen;
 
 import java.awt.Graphics2D;
 import java.util.ArrayList;
-
+import OOP_Project.game_screen.GameScreen;
 import OOP_Project.explosion.ExplosionManager;
+import OOP_Project.player_bullets.Lazer;
 import OOP_Project.player_bullets.MachineGun;
 import OOP_Project.player_bullets.PlayerWeaponType;
 import OOP_Project.sound.Sound;
@@ -48,7 +49,9 @@ public class PlayerWeapons {
 				shootSound.stop();
 			}
 			shootSound.play();
-			weapons.add(new MachineGun(xPos + 22, yPos + 15, width, height));
+			if(GameScreen.SCORE <= 400)
+				weapons.add(new MachineGun(xPos + 22, yPos + 15, width, height));
+			else weapons.add(new Lazer(xPos + 22, yPos + 15));
 		}
 	}
 
