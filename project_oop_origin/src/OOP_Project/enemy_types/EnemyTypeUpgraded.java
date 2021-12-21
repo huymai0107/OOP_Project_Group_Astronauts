@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import OOP_Project.display.Display;
-import OOP_Project.enemy_bullets.EnemyBasicBullet;
+import OOP_Project.enemy_bullets.EnemyUpgradedBullet;
 import OOP_Project.game_screen.BasicBlocks;
 import OOP_Project.game_screen.GameScreen;
 import OOP_Project.game_screen.Player;
@@ -17,7 +17,7 @@ import OOP_Project.timer.Timer;
 
 public class EnemyTypeUpgraded extends EnemyType{
 
-	private double speed = 0.5d; 
+	private double speed = 1d; 
 	
 	private Rectangle rect;
 	private SpriteAnimation enemySprite;
@@ -57,8 +57,8 @@ public class EnemyTypeUpgraded extends EnemyType{
 		this.getRect().x = (int) enemySprite.getxPos();
 		
 		if (shootTimer.timerEvent(shootTime)) {
-			getBulletHandler().addBullet(new EnemyBasicBullet(getRect().x, getRect().y));
-			shootTime = new Random().nextInt(6000);
+			getBulletHandler().addBullet(new EnemyUpgradedBullet(getRect().x, getRect().y));
+			shootTime = new Random().nextInt(12000);
 		}
 	}
 
@@ -92,19 +92,21 @@ public class EnemyTypeUpgraded extends EnemyType{
 		if(enemySprite.isPlay()) {
 			if(enemys.get(i).deathScene()) {
 				enemys.remove(i);
+	
 			}
-			return false;
 		}
-		
 		for(int w = 0; w < player.playerWeapons.weapons.size(); w++) {
 			if(enemys != null && player.playerWeapons.weapons.get(w).collisionRect(((EnemyTypeUpgraded) enemys.get(i)).getRect())) 
 			{
-				enemySprite.resetLimit();
-				enemySprite.setAnimationSpeed(60);
-				enemySprite.setPlay(true, true);
-				GameScreen.SCORE += 20;
-				return true;
+					enemySprite.resetLimit();
+					enemySprite.setAnimationSpeed(60);
+					enemySprite.setPlay(true, true);
+					GameScreen.SCORE += 20;
+					return true;
+				
+
 			}
+			
 		}
 		
 		return false;

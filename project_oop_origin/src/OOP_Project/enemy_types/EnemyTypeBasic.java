@@ -39,7 +39,7 @@ public class EnemyTypeBasic extends EnemyType{
 		enemySprite.setLoop(true);
 		
 		shootTimer = new Timer();
-		shootTime = new Random().nextInt(12000);
+		shootTime = new Random().nextInt(20000);
 		
 		explosionSound = new Sound("/OOP_Project/sounds/explosion.wav");
 	}
@@ -58,7 +58,7 @@ public class EnemyTypeBasic extends EnemyType{
 		
 		if (shootTimer.timerEvent(shootTime)) {
 			getBulletHandler().addBullet(new EnemyBasicBullet(getRect().x, getRect().y));
-			shootTime = new Random().nextInt(12000);
+			shootTime = new Random().nextInt(20000);
 		}
 	}
 
@@ -97,7 +97,7 @@ public class EnemyTypeBasic extends EnemyType{
 		}
 		
 		for(int w = 0; w < player.playerWeapons.weapons.size(); w++) {
-			if(enemys != null && player.playerWeapons.weapons.get(w).collisionRect(((EnemyTypeBasic) enemys.get(i)).getRect())) 
+			if(enemys != null && player.playerWeapons.weapons.get(w).collisionRect(((EnemyTypeBasic)enemys.get(i)).getRect())) 
 			{
 				enemySprite.resetLimit();
 				enemySprite.setAnimationSpeed(60);
@@ -109,6 +109,8 @@ public class EnemyTypeBasic extends EnemyType{
 		
 		return false;
 	}
+
+	
 
 	@Override
 	public boolean isOutOfBounds() {
