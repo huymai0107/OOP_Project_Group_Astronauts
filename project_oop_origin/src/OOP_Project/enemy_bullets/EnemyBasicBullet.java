@@ -35,7 +35,6 @@ public class EnemyBasicBullet extends EnemyWeaponType{
 		if (bullet == null) {
 			return;
 		}
-		
 		setyPos((int) (getyPos() + (delta * speed))); 
 		bullet.y = getyPos();
 		

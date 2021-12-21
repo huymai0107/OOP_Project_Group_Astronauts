@@ -60,7 +60,6 @@ public class BasicBlocks {
 	
 	public void reset(){
 		wall.clear();
-		
 		basicBlocks(75, 450);
 		basicBlocks(275, 450);
 		basicBlocks(475, 450);

@@ -16,4 +16,5 @@ public interface SuperLevel {
 	
 	void destory();
 	void reset();
+	void resetComplete();
 }

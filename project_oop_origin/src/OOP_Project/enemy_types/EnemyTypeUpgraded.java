@@ -15,7 +15,7 @@ import OOP_Project.sound.Sound;
 import OOP_Project.sprite.SpriteAnimation;
 import OOP_Project.timer.Timer;
 
-public class EnemyTypeBasic extends EnemyType{
+public class EnemyTypeUpgraded extends EnemyType{
 
 	private double speed = 0.5d; 
 	
@@ -27,10 +27,10 @@ public class EnemyTypeBasic extends EnemyType{
 	
 	private Sound explosionSound;
 	
-	public EnemyTypeBasic(double xPos, double yPos, int rows, int columns, EnemyBulletHandler bulletHandler){
+	public EnemyTypeUpgraded(double xPos, double yPos, int rows, int columns, EnemyBulletHandler bulletHandler){
 		super(bulletHandler);
 		
-		enemySprite = new SpriteAnimation(xPos, yPos, rows, columns, 300, "/OOP_Project/images/Invaders.png");
+		enemySprite = new SpriteAnimation(xPos, yPos, rows, columns, 300, "/OOP_Project/images/InvadersTypeUpgraded.png");
 		enemySprite.setWidth(25);
 		enemySprite.setHeight(25);
 		enemySprite.setLimit(2);
@@ -58,7 +58,7 @@ public class EnemyTypeBasic extends EnemyType{
 		
 		if (shootTimer.timerEvent(shootTime)) {
 			getBulletHandler().addBullet(new EnemyBasicBullet(getRect().x, getRect().y));
-			shootTime = new Random().nextInt(12000);
+			shootTime = new Random().nextInt(6000);
 		}
 	}
 
@@ -97,12 +97,12 @@ public class EnemyTypeBasic extends EnemyType{
 		}
 		
 		for(int w = 0; w < player.playerWeapons.weapons.size(); w++) {
-			if(enemys != null && player.playerWeapons.weapons.get(w).collisionRect(((EnemyTypeBasic) enemys.get(i)).getRect())) 
+			if(enemys != null && player.playerWeapons.weapons.get(w).collisionRect(((EnemyTypeUpgraded) enemys.get(i)).getRect())) 
 			{
 				enemySprite.resetLimit();
 				enemySprite.setAnimationSpeed(60);
 				enemySprite.setPlay(true, true);
-				GameScreen.SCORE += 10;
+				GameScreen.SCORE += 20;
 				return true;
 			}
 		}

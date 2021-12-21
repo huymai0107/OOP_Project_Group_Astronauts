@@ -11,7 +11,6 @@ public class imageLoader
 		try {
 			return ImageIO.read(imageLoader.class.getResource(path));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.exit(1);
 		}

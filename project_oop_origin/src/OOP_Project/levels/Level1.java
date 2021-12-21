@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import OOP_Project.enemy_types.EnemyType;
 import OOP_Project.enemy_types.EnemyTypeBasic;
+import OOP_Project.enemy_types.EnemyTypeUpgraded;
 import OOP_Project.game_screen.BasicBlocks;
 import OOP_Project.game_screen.Player;
 import OOP_Project.handler.EnemyBulletHandler;
@@ -99,6 +100,22 @@ public class Level1 implements SuperLevel{
 		bulletHandler.reset();
 	}
 	
+	@Override
+	public void resetComplete() {
+		player.reset();
+		enemies.clear();
+		addEnemiesUpgraded();
+		
+		bulletHandler.reset();
+	}
+	public void addEnemiesUpgraded() {
+		for(int y = 0; y < 5; y++){
+			for(int x = 0; x < 10; x++){
+				EnemyType e = new EnemyTypeUpgraded(150 + (x * 40), 25 + (y * 40), 1 , 3, bulletHandler);
+				enemies.add(e);
+			}
+		}
+	}	
 	public void addEnemies() {
 		for(int y = 0; y < 5; y++){
 			for(int x = 0; x < 10; x++){
@@ -110,6 +127,7 @@ public class Level1 implements SuperLevel{
 
 	@Override
 	public boolean isComplete() {
+		
 		return enemies.isEmpty();
 	}
 }

@@ -1,5 +1,6 @@
 package OOP_Project.display;
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.Graphics2D;
@@ -19,6 +20,8 @@ public class Display extends Canvas implements Runnable {
 	private static Sound backgroundMusic;
 	BufferedImage pSprite;
 	public static void main(String[] args) {
+		
+		//register font
 		try {
 			GraphicsEnvironment ge = 
 			GraphicsEnvironment.getLocalGraphicsEnvironment();			
@@ -27,12 +30,15 @@ public class Display extends Canvas implements Runnable {
 	   } catch (IOException|FontFormatException e) {
 			//Handle exception
 	   }
+		
+		
+		
 		Display display = new Display();
 		JFrame frame = new JFrame();
 		frame.add(display);
 		frame.pack();
 		frame.setTitle("Space Invaders");
-		 frame.setLocationRelativeTo(null);
+		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
 		frame.setVisible(true);
@@ -121,7 +127,6 @@ public class Display extends Canvas implements Runnable {
 			do {
 				
 				Graphics2D g = (Graphics2D) bs.getDrawGraphics();
-				g.fillRect(0, 0, WIDTH, HEIGHT);
 				g.drawImage(imageLoader.loadImage("/OOP_Project/images/wallpaper.jpg"), 0, 0, null);
 				state.draw(g);
 				g.dispose();

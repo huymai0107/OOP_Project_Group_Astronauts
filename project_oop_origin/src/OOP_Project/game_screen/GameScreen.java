@@ -18,6 +18,7 @@ public class GameScreen extends SuperStateMachine {
 	private Player player;
 	private BasicBlocks blocks;
 	private Level1 level;
+
 	private EnemyBulletHandler bulletHandler;
 	
 	public static int SCORE = 0;
@@ -30,6 +31,7 @@ public class GameScreen extends SuperStateMachine {
 		bulletHandler = new EnemyBulletHandler();
 		player = new Player(Display.WIDTH/2-50, Display.HEIGHT-75, 50, 50, blocks);
 		level = new Level1(player, bulletHandler);
+
 	}
 	
 	@Override
@@ -50,7 +52,7 @@ public class GameScreen extends SuperStateMachine {
 		if (level.isComplete()) {
 			completeTimer.tick(delta);
 			if (completeTimer.isEventReady()) {
-				level.reset();
+				level.resetComplete();
 			}
 		}
 	}
@@ -64,7 +66,6 @@ public class GameScreen extends SuperStateMachine {
 		g.drawString("Score: " + SCORE, 8, 18);
 		
 		g.setColor(Color.red);
-//		g.drawString("Health: " + player.getHealth(), 5, 35);
 		if(player.getHealth() == 3)
 		{
 			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 5, Display.HEIGHT - 20, null);
@@ -85,7 +86,8 @@ public class GameScreen extends SuperStateMachine {
 		blocks.draw(g);
 		player.draw(g);
 		level.draw(g);
-		
+
+		 
 		if (level.isGameOver()) {
 			g.setFont(new Font("Upheaval TT (BRK)", Font.BOLD, 64));
 			g.setColor(Color.YELLOW);
@@ -97,9 +99,6 @@ public class GameScreen extends SuperStateMachine {
 		}
 		
 		if (level.isComplete()) {
-			
-			
-			
 			g.setFont(new Font("Upheaval TT (BRK)", Font.BOLD, 60));
 			g.setColor(Color.CYAN);
 			String complete = "MISSION ACCOMPLISHED!";
