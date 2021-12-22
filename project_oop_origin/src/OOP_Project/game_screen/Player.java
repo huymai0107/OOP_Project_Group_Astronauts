@@ -14,7 +14,7 @@ import OOP_Project.display.Display;
 
 public class Player implements KeyListener{
 	
-	private final double speed = 1.5d;
+	private final double speed = 2d;
 	private int health;
 	private BufferedImage pSprite;
 	private Rectangle rect;
@@ -120,7 +120,7 @@ public class Player implements KeyListener{
 	}
 
 	public void reset() {
-		health = 3;
+//		health = 3;
 		left = false;
 		right = false;
 		shoot = false;

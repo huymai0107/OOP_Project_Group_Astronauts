@@ -1,11 +1,14 @@
 package OOP_Project.enemy_types;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.Random;
 
 import OOP_Project.display.Display;
+import OOP_Project.enemy_bullets.EnemyBasicBullet;
+import OOP_Project.enemy_bullets.EnemyBossWeapon;
 import OOP_Project.enemy_bullets.EnemyUpgradedBullet;
 import OOP_Project.game_screen.BasicBlocks;
 import OOP_Project.game_screen.GameScreen;
@@ -15,38 +18,66 @@ import OOP_Project.sound.Sound;
 import OOP_Project.sprite.SpriteAnimation;
 import OOP_Project.timer.Timer;
 
-public class EnemyTypeUpgraded extends EnemyType{
+public class Boss extends EnemyType{
 
-	private double speed = 1d; 
+	private double speed = 3d; 
 	Random random;
 	private Rectangle rect;
-	private SpriteAnimation enemySprite;
-	
+	private SpriteAnimation enemySprite;	
 	private int shootTime;
-	private Timer shootTimer;
-	
+	private Timer shootTimer;	
 	private Sound explosionSound;
+	private int health;
+	public static int HEALTH = 50;
 	
-	public EnemyTypeUpgraded(double xPos, double yPos, int rows, int columns, EnemyBulletHandler bulletHandler){
+	public int getHealth() {
+		return health;
+	}
+
+	public void setHealth(int health) {
+		this.health = health;
+	}
+	public void hit() {
+		setHealth(getHealth()-1);
+	}
+	public Boss(double xPos, double yPos, int rows, int columns, EnemyBulletHandler bulletHandler){
 		super(bulletHandler);
-		
-		enemySprite = new SpriteAnimation(xPos, yPos, rows, columns, 300, "/OOP_Project/images/InvadersTypeUpgraded.png");
-		enemySprite.setWidth(25);
-		enemySprite.setHeight(25);
+		setHealth(HEALTH);
+		enemySprite = new SpriteAnimation(xPos, yPos, rows, columns, 300, "/OOP_Project/images/Boss.png");
+		enemySprite.setWidth(150);
+		enemySprite.setHeight(150);
 		enemySprite.setLimit(2);
 		
 		this.setRect(new Rectangle((int) enemySprite.getxPos(), (int) enemySprite.getyPos(), enemySprite.getWidth(), enemySprite.getHeight()));
 		enemySprite.setLoop(true);
 		
 		shootTimer = new Timer();
-		shootTime = new Random().nextInt(12000);
+		shootTime = new Random().nextInt(800);
 		
 		explosionSound = new Sound("/OOP_Project/sounds/explosion.wav");
 	}
 	
 	@Override
 	public void draw(Graphics2D g) {
+
 		enemySprite.draw(g);
+		if(getHealth() <= HEALTH/4) 
+		{
+		g.setColor(Color.red);
+		
+		}
+		else if(getHealth() <= HEALTH/2 )
+		{
+			g.setColor(Color.yellow);
+		}
+		else if(getHealth() <= HEALTH )
+		{
+			g.setColor(Color.green);
+		}
+		g.fillRect(200, 10, getHealth()*10, 15);
+
+
+
 	}
 
 	@Override
@@ -56,14 +87,16 @@ public class EnemyTypeUpgraded extends EnemyType{
 		this.getRect().x = (int) enemySprite.getxPos();
 		
 		if (shootTimer.timerEvent(shootTime)) {
+			getBulletHandler().addBullet(new EnemyBasicBullet(getRect().x, getRect().y));
 			getBulletHandler().addBullet(new EnemyUpgradedBullet(getRect().x, getRect().y));
-			shootTime = new Random().nextInt(12000);
+			getBulletHandler().addBullet(new EnemyBossWeapon(getRect().x, getRect().y));
+			shootTime = new Random().nextInt(800);
 		}
 	}
 
 	@Override
 	public void changeDirection(double delta) {
-		speed *= -1.05d;
+		speed *= -1.0d;
 		enemySprite.setxPos(enemySprite.getxPos() - (delta * speed));
 		this.getRect().x = (int) enemySprite.getxPos();
 		
@@ -88,21 +121,29 @@ public class EnemyTypeUpgraded extends EnemyType{
 
 	@Override
 	public boolean collide(int i, Player player, BasicBlocks blocks, ArrayList<EnemyType> enemys) {
+		
 		if(enemySprite.isPlay()) {
 			if(enemys.get(i).deathScene()) {
+				
 				enemys.remove(i);
 			}
 			return false;
 		}
 		
 		for(int w = 0; w < player.playerWeapons.weapons.size(); w++) {
-			if(enemys != null && player.playerWeapons.weapons.get(w).collisionRect(((EnemyTypeUpgraded)enemys.get(i)).getRect())) 
-			{
-				enemySprite.resetLimit();
-				enemySprite.setAnimationSpeed(60);
-				enemySprite.setPlay(true, true);
-				GameScreen.SCORE += 15 +(int)(Math.random()*((25-15) + 1));
-				return true;
+			if(enemys != null && player.playerWeapons.weapons.get(w).collisionRect(((Boss)enemys.get(i)).getRect())) 
+			{	hit();
+				if(getHealth() == 0)
+				{
+					enemySprite.resetLimit();
+					enemySprite.setAnimationSpeed(60);
+					enemySprite.setPlay(true, true);
+					GameScreen.SCORE += 1000+(int)(Math.random()*((2000-1000) + 1));
+					return true;
+				}
+
+
+
 			}
 		}
 		
@@ -115,7 +156,7 @@ public class EnemyTypeUpgraded extends EnemyType{
 	public boolean isOutOfBounds() {
 		if(rect.x > 0 && rect.x < Display.WIDTH - rect.width)
 			return false;
-		return true;
+		else return true;
 	}
 
 	public Rectangle getRect() {

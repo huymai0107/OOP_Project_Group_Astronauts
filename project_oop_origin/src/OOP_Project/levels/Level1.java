@@ -3,6 +3,7 @@ package OOP_Project.levels;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
+import OOP_Project.enemy_types.Boss;
 import OOP_Project.enemy_types.EnemyType;
 import OOP_Project.enemy_types.EnemyTypeBasic;
 import OOP_Project.enemy_types.EnemyTypeUpgraded;
@@ -16,7 +17,7 @@ public class Level1 implements SuperLevel{
 	private Player player;
 	private ArrayList<EnemyType> enemies = new ArrayList<EnemyType>();
 	private EnemyBulletHandler bulletHandler;
-	
+
 	private Sound beep, boop;
 	private boolean beepboop;
 	
@@ -95,18 +96,27 @@ public class Level1 implements SuperLevel{
 	public void reset() {
 		player.reset();
 		enemies.clear();
-		addEnemies();
-		
+		addEnemies();		
 		bulletHandler.reset();
 	}
 	
 	@Override
-	public void resetComplete() {
+	public void resetStage1() {
 		player.reset();
 		enemies.clear();
-		addEnemiesUpgraded();
-		
+		addEnemiesUpgraded();		
 		bulletHandler.reset();
+	}
+	@Override
+	public void resetStage2() {
+		player.reset();
+		enemies.clear();
+		addBoss();		
+		bulletHandler.reset();
+	}
+	public void addBoss() {
+				EnemyType e = new Boss(150 , 25 , 1 , 3, bulletHandler);
+				enemies.add(e);	
 	}
 	public void addEnemiesUpgraded() {
 		for(int y = 0; y < 5; y++){
@@ -116,18 +126,29 @@ public class Level1 implements SuperLevel{
 			}
 		}
 	}	
-	public void addEnemies() {
-		for(int y = 0; y < 5; y++){
+	public void addEnemies() 
+	{
+		for(int y = 0; y < 5; y++)
+		{
 			for(int x = 0; x < 10; x++){
 				EnemyType e = new EnemyTypeBasic(150 + (x * 40), 25 + (y * 40), 1 , 3, bulletHandler);
 				enemies.add(e);
 			}
+				
 		}
+
+			
 	}
+	
 
 	@Override
 	public boolean isComplete() {
-		
 		return enemies.isEmpty();
+	}
+	
+	@Override
+	public boolean isCompleteBanner() {
+		return enemies.isEmpty();
+		
 	}
 }

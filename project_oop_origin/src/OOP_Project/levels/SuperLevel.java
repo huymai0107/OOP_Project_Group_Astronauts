@@ -13,8 +13,9 @@ public interface SuperLevel {
 	
 	boolean isGameOver();
 	boolean isComplete();
-	
+	boolean isCompleteBanner();
 	void destory();
 	void reset();
-	void resetComplete();
+	void resetStage1();
+	void resetStage2();
 }

@@ -14,7 +14,7 @@ import OOP_Project.state.SuperStateMachine;
 import OOP_Project.timer.TickTimer;
 
 public class GameScreen extends SuperStateMachine {
-	
+	private static int count = 1;
 	private Player player;
 	private BasicBlocks blocks;
 	private Level1 level;
@@ -36,6 +36,7 @@ public class GameScreen extends SuperStateMachine {
 	
 	@Override
 	public void update(double delta) {
+		
 		player.update(delta);
 		level.update(delta, blocks);
 		
@@ -49,12 +50,35 @@ public class GameScreen extends SuperStateMachine {
 			}
 		}
 		
-		if (level.isComplete()) {
-			completeTimer.tick(delta);
-			if (completeTimer.isEventReady()) {
-				level.resetComplete();
+		if (level.isComplete() ) {
+			if(count == 1)
+			{
+				completeTimer.tick(delta);
+				if (completeTimer.isEventReady()) {
+					level.resetStage1();
+				}
+			}
+			else if(count == 2)
+			{
+				completeTimer.tick(delta);
+				if (completeTimer.isEventReady()) {
+					level.resetStage2();
+				}
+			}
+			else if(count == 3)
+			{
+				completeTimer.tick(delta);
+				if (completeTimer.isEventReady()) {
+					level.reset();
+				}
+			}
+			else {
+				count = 0;
 			}
 		}
+		count++;
+		
+
 	}
 	
 	@Override
@@ -98,7 +122,7 @@ public class GameScreen extends SuperStateMachine {
 			g.drawString(gameOver, (Display.WIDTH/2)-(gameOverWidth/2)+2, (Display.HEIGHT/2)+2);
 		}
 		
-		if (level.isComplete()) {
+		if (level.isCompleteBanner()) {
 			g.setFont(new Font("Upheaval TT (BRK)", Font.BOLD, 60));
 			g.setColor(Color.CYAN);
 			String complete = "MISSION ACCOMPLISHED!";

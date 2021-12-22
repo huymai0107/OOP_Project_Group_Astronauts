@@ -40,15 +40,15 @@ public class BasicBlocks {
 			}
 		}
 		
-//		//Left side.
-//		for(int i = 0; i < 5; i++){
-//			row(8 + wallWidth - i, xPos - x, (yPos + y) + (i * 3));
-//		}
-//		
-//		//Right side.
-//		for(int i = 0; i < 5; i++){
-//			row(8 + wallWidth - i, (xPos - x + (14 * 3)) + (i * 3), (yPos + y) + (i * 3));
-//		}
+		//Left side.
+		for(int i = 0; i < 5; i++){
+			row(8 + wallWidth - i, xPos - x, (yPos + y) + (i * 3));
+		}
+		
+		//Right side.
+		for(int i = 0; i < 5; i++){
+			row(8 + wallWidth - i, (xPos - x + (14 * 3)) + (i * 3), (yPos + y) + (i * 3));
+		}
 	}
 	
 	public void row(int rows, int xPos, int yPos){

@@ -7,6 +7,7 @@ import java.util.Random;
 
 import OOP_Project.display.Display;
 import OOP_Project.enemy_bullets.EnemyBasicBullet;
+import OOP_Project.enemy_bullets.EnemyUpgradedBullet;
 import OOP_Project.game_screen.BasicBlocks;
 import OOP_Project.game_screen.GameScreen;
 import OOP_Project.game_screen.Player;
@@ -17,7 +18,7 @@ import OOP_Project.timer.Timer;
 
 public class EnemyTypeBasic extends EnemyType{
 
-	private double speed = 0.5d; 
+	private double speed = 1d; 
 	Random random;
 	private Rectangle rect;
 	private SpriteAnimation enemySprite;
@@ -51,8 +52,7 @@ public class EnemyTypeBasic extends EnemyType{
 
 	@Override
 	public void update(double delta, Player player, BasicBlocks blocks) {
-		enemySprite.update(delta);
-		
+		enemySprite.update(delta);	
 		enemySprite.setxPos(enemySprite.getxPos() - (delta * speed));
 		this.getRect().x = (int) enemySprite.getxPos();
 		
@@ -64,12 +64,10 @@ public class EnemyTypeBasic extends EnemyType{
 
 	@Override
 	public void changeDirection(double delta) {
-		speed *= -1.1d;
+		speed *= -1.0d;
 		enemySprite.setxPos(enemySprite.getxPos() - (delta * speed));
 		this.getRect().x = (int) enemySprite.getxPos();
-		
-		enemySprite.setyPos(enemySprite.getyPos() + (delta * 15));
-		this.getRect().y = (int) enemySprite.getyPos();
+
 	}
 
 	@Override
@@ -102,7 +100,7 @@ public class EnemyTypeBasic extends EnemyType{
 				enemySprite.resetLimit();
 				enemySprite.setAnimationSpeed(60);
 				enemySprite.setPlay(true, true);
-				GameScreen.SCORE += 5+(int)(Math.random()*((10-5) + 1));
+				GameScreen.SCORE += 15 +(int)(Math.random()*((25-15) + 1));
 				return true;
 			}
 		}

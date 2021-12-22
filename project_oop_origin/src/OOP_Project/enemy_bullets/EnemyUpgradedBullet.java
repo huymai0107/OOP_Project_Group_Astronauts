@@ -61,9 +61,10 @@ public class EnemyUpgradedBullet extends EnemyWeaponType{
 			return;
 		}
 		
-		for (int w = 0; w < blocks.wall.size(); w++) {
+		for (int w = 0; w < blocks.wall.size()-1; w++) {
 			if(bullet.intersects(blocks.wall.get(w))) {
 				blocks.wall.remove(w);
+				blocks.wall.remove(w+1);
 				bullet = null;
 				break;
 			}

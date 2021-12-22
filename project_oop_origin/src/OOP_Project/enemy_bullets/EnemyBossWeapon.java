@@ -8,14 +8,14 @@ import OOP_Project.display.Display;
 import OOP_Project.game_screen.BasicBlocks;
 import OOP_Project.game_screen.Player;
 
-public class EnemyBasicBullet extends EnemyWeaponType{
+public class EnemyBossWeapon extends EnemyWeaponType{
 
 	private Rectangle bullet;
 	private double speed = 2.5d;
 	private int xPos, yPos;
 	
-	public EnemyBasicBullet(double xPos, double yPos) {
-		bullet = new Rectangle((int) xPos, (int) yPos, 5, 5);
+	public EnemyBossWeapon(double xPos, double yPos) {
+		bullet = new Rectangle((int) xPos, (int) yPos, 35, 35);
 		setxPos((int) xPos); 
 		setyPos((int) yPos); 
 	}
@@ -25,8 +25,8 @@ public class EnemyBasicBullet extends EnemyWeaponType{
 		if (bullet == null) {
 			return;
 		}
-		
-		g.setColor(Color.yellow);
+//		
+		g.setColor(Color.red);
 		g.fill(bullet);
 	}
 
@@ -63,7 +63,8 @@ public class EnemyBasicBullet extends EnemyWeaponType{
 		
 		for (int w = 0; w < blocks.wall.size(); w++) {
 			if(bullet.intersects(blocks.wall.get(w))) {
-				blocks.wall.remove(w);
+				for(int i = 0; i <= 4; i++)
+					blocks.wall.remove(w + i );
 				bullet = null;
 				break;
 			}

@@ -49,7 +49,7 @@ public class PlayerWeapons {
 				shootSound.stop();
 			}
 			shootSound.play();
-			if(GameScreen.SCORE <= 400)
+			if(GameScreen.SCORE <= 1000)
 				weapons.add(new MachineGun(xPos + 22, yPos + 15, width, height));
 			else weapons.add(new Lazer(xPos + 22, yPos + 15));
 		}
