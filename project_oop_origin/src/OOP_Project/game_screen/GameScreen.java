@@ -14,7 +14,6 @@ import OOP_Project.state.SuperStateMachine;
 import OOP_Project.timer.TickTimer;
 
 public class GameScreen extends SuperStateMachine {
-	private static int count = 1;
 	private Player player;
 	private BasicBlocks blocks;
 	private Level1 level;
@@ -47,36 +46,35 @@ public class GameScreen extends SuperStateMachine {
 				blocks.reset();
 				getStateMachine().setState((byte) 0);
 				SCORE = 0;
+//				System.exit(0);
 			}
 		}
 		
 		if (level.isComplete() ) {
-			if(count == 1)
+			
+			int n;
+			n = (Math.random() <= 0.5) ? 1 : 2;
+			switch(n)
 			{
-				completeTimer.tick(delta);
-				if (completeTimer.isEventReady()) {
-					level.resetStage1();
+				case 1:
+				{
+					completeTimer.tick(delta);
+					if (completeTimer.isEventReady()) {
+						level.resetStage2();
+					}
 				}
-			}
-			else if(count == 2)
-			{
-				completeTimer.tick(delta);
-				if (completeTimer.isEventReady()) {
-					level.resetStage2();
+				case 2:
+				{
+					completeTimer.tick(delta);
+					if (completeTimer.isEventReady()) {
+						level.resetStage3();
+					}
 				}
-			}
-			else if(count == 3)
-			{
-				completeTimer.tick(delta);
-				if (completeTimer.isEventReady()) {
-					level.reset();
-				}
-			}
-			else {
-				count = 0;
 			}
 		}
-		count++;
+			
+
+		
 		
 
 	}

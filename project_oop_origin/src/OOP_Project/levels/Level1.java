@@ -91,9 +91,15 @@ public class Level1 implements SuperLevel{
 	public void destory() {
 		
 	}
-
 	@Override
 	public void reset() {
+		player.resetfull();
+		enemies.clear();
+		addEnemies();		
+		bulletHandler.reset();
+	}
+	@Override
+	public void resetStage1() {
 		player.reset();
 		enemies.clear();
 		addEnemies();		
@@ -101,14 +107,14 @@ public class Level1 implements SuperLevel{
 	}
 	
 	@Override
-	public void resetStage1() {
+	public void resetStage2() {
 		player.reset();
 		enemies.clear();
 		addEnemiesUpgraded();		
 		bulletHandler.reset();
 	}
 	@Override
-	public void resetStage2() {
+	public void resetStage3() {
 		player.reset();
 		enemies.clear();
 		addBoss();		
@@ -151,4 +157,5 @@ public class Level1 implements SuperLevel{
 		return enemies.isEmpty();
 		
 	}
+
 }

@@ -81,6 +81,12 @@ public class Player implements KeyListener{
 			shoot = true;
 
 		}
+		
+		
+		if (e.getKeyCode() == KeyEvent.VK_ESCAPE) 
+		{
+			System.exit(0);			
+		}
 	}
 
 	@Override
@@ -119,12 +125,22 @@ public class Player implements KeyListener{
 		return rect;
 	}
 
+	public void resetfull() {
+		health = 3;
+		left = false;
+		right = false;
+		shoot = false;		
+		xPos = startXPos;
+		yPos = startYPos;
+		rect.x = (int) xPos;
+		rect.y = (int) yPos+25;
+		playerWeapons.reset();
+	}
 	public void reset() {
 //		health = 3;
 		left = false;
 		right = false;
-		shoot = false;
-		
+		shoot = false;		
 		xPos = startXPos;
 		yPos = startYPos;
 		rect.x = (int) xPos;
