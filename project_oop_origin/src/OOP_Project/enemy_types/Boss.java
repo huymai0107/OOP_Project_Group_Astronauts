@@ -28,12 +28,11 @@ public class Boss extends EnemyType{
 	private Timer shootTimer;	
 	private Sound explosionSound;
 	private int health;
-	public static int HEALTH = 50;
+	public static int BOSSHEALTH = 50;
 	
 	public int getHealth() {
 		return health;
 	}
-
 	public void setHealth(int health) {
 		this.health = health;
 	}
@@ -42,7 +41,7 @@ public class Boss extends EnemyType{
 	}
 	public Boss(double xPos, double yPos, int rows, int columns, EnemyBulletHandler bulletHandler){
 		super(bulletHandler);
-		setHealth(HEALTH);
+		setHealth(BOSSHEALTH);
 		enemySprite = new SpriteAnimation(xPos, yPos, rows, columns, 300, "/OOP_Project/images/Boss.png");
 		enemySprite.setWidth(150);
 		enemySprite.setHeight(150);
@@ -61,16 +60,16 @@ public class Boss extends EnemyType{
 	public void draw(Graphics2D g) {
 
 		enemySprite.draw(g);
-		if(getHealth() <= HEALTH/4) 
+		if(getHealth() <= BOSSHEALTH/4) 
 		{
 		g.setColor(Color.red);
 		
 		}
-		else if(getHealth() <= HEALTH/2 )
+		else if(getHealth() <= BOSSHEALTH/2 )
 		{
 			g.setColor(Color.yellow);
 		}
-		else if(getHealth() <= HEALTH )
+		else if(getHealth() <= BOSSHEALTH )
 		{
 			g.setColor(Color.green);
 		}
@@ -100,7 +99,7 @@ public class Boss extends EnemyType{
 		enemySprite.setxPos(enemySprite.getxPos() - (delta * speed));
 		this.getRect().x = (int) enemySprite.getxPos();
 		
-		enemySprite.setyPos(enemySprite.getyPos() + (delta * 5));
+		enemySprite.setyPos(enemySprite.getyPos() + (delta * 2));
 		this.getRect().y = (int) enemySprite.getyPos();
 	}
 
@@ -141,12 +140,8 @@ public class Boss extends EnemyType{
 					GameScreen.SCORE += 1000+(int)(Math.random()*((2000-1000) + 1));
 					return true;
 				}
-
-
-
 			}
 		}
-		
 		return false;
 	}
 

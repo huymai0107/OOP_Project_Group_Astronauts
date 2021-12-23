@@ -42,7 +42,6 @@ public class Player implements KeyListener{
 			pSprite = ImageIO.read(url);
 		}
 		catch(IOException e){};
-		
 		this.blocks = blocks;
 		playerWeapons = new PlayerWeapons();
 	}
@@ -60,9 +59,7 @@ public class Player implements KeyListener{
 			xPos -= speed * delta;
 			rect.x = (int) xPos;
 		}
-		
 		playerWeapons.update(delta, blocks);
-		
 		if(shoot){
 			playerWeapons.shootBullet(xPos, yPos, 5, 5);
 		}
@@ -81,8 +78,6 @@ public class Player implements KeyListener{
 			shoot = true;
 
 		}
-		
-		
 		if (e.getKeyCode() == KeyEvent.VK_ESCAPE) 
 		{
 			System.exit(0);			
@@ -96,8 +91,7 @@ public class Player implements KeyListener{
 			right = false;
 		}else if (key == KeyEvent.VK_A || key == KeyEvent.VK_LEFT){
 			left = false;
-		}
-		
+		}		
 		if (key == KeyEvent.VK_SPACE){
 			shoot = false;
 		}
@@ -105,7 +99,7 @@ public class Player implements KeyListener{
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
+		System.out.println("pressed");
 		
 	}
 	
@@ -124,7 +118,7 @@ public class Player implements KeyListener{
 	public Rectangle getRect() {
 		return rect;
 	}
-
+// reset when losing
 	public void resetfull() {
 		health = 3;
 		left = false;
@@ -136,6 +130,7 @@ public class Player implements KeyListener{
 		rect.y = (int) yPos+25;
 		playerWeapons.reset();
 	}
+//reset to another stage
 	public void reset() {
 //		health = 3;
 		left = false;

@@ -27,19 +27,31 @@ public class EnemyTypeUpgraded extends EnemyType{
 	
 	private Sound explosionSound;
 	
+	private int health;
+	public static int HEALTH = 3;
+	
+	public int getHealth() {
+		return health;
+	}
+	public void setHealth(int health) {
+		this.health = health;
+	}
+	public void hit() {
+		setHealth(getHealth()-1);
+	}
 	public EnemyTypeUpgraded(double xPos, double yPos, int rows, int columns, EnemyBulletHandler bulletHandler){
 		super(bulletHandler);
-		
+		setHealth(HEALTH);
 		enemySprite = new SpriteAnimation(xPos, yPos, rows, columns, 300, "/OOP_Project/images/InvadersTypeUpgraded.png");
-		enemySprite.setWidth(25);
-		enemySprite.setHeight(25);
+		enemySprite.setWidth(40);
+		enemySprite.setHeight(40);
 		enemySprite.setLimit(2);
 		
 		this.setRect(new Rectangle((int) enemySprite.getxPos(), (int) enemySprite.getyPos(), enemySprite.getWidth(), enemySprite.getHeight()));
 		enemySprite.setLoop(true);
 		
 		shootTimer = new Timer();
-		shootTime = new Random().nextInt(12000);
+		shootTime = new Random().nextInt(8000);
 		
 		explosionSound = new Sound("/OOP_Project/sounds/explosion.wav");
 	}
@@ -57,7 +69,7 @@ public class EnemyTypeUpgraded extends EnemyType{
 		
 		if (shootTimer.timerEvent(shootTime)) {
 			getBulletHandler().addBullet(new EnemyUpgradedBullet(getRect().x, getRect().y));
-			shootTime = new Random().nextInt(12000);
+			shootTime = new Random().nextInt(8000);
 		}
 	}
 
@@ -67,7 +79,7 @@ public class EnemyTypeUpgraded extends EnemyType{
 		enemySprite.setxPos(enemySprite.getxPos() - (delta * speed));
 		this.getRect().x = (int) enemySprite.getxPos();
 		
-		enemySprite.setyPos(enemySprite.getyPos() + (delta * 5));
+		enemySprite.setyPos(enemySprite.getyPos() + (delta * 2));
 		this.getRect().y = (int) enemySprite.getyPos();
 	}
 
@@ -88,8 +100,10 @@ public class EnemyTypeUpgraded extends EnemyType{
 
 	@Override
 	public boolean collide(int i, Player player, BasicBlocks blocks, ArrayList<EnemyType> enemys) {
+		
 		if(enemySprite.isPlay()) {
 			if(enemys.get(i).deathScene()) {
+				
 				enemys.remove(i);
 			}
 			return false;
@@ -97,12 +111,18 @@ public class EnemyTypeUpgraded extends EnemyType{
 		
 		for(int w = 0; w < player.playerWeapons.weapons.size(); w++) {
 			if(enemys != null && player.playerWeapons.weapons.get(w).collisionRect(((EnemyTypeUpgraded)enemys.get(i)).getRect())) 
-			{
-				enemySprite.resetLimit();
-				enemySprite.setAnimationSpeed(60);
-				enemySprite.setPlay(true, true);
-				GameScreen.SCORE += 10 +(int)(Math.random()*((25-10) + 1));
-				return true;
+			{	hit();
+				if(getHealth() == 0)
+				{
+					enemySprite.resetLimit();
+					enemySprite.setAnimationSpeed(60);
+					enemySprite.setPlay(true, true);
+					GameScreen.SCORE += 20+(int)(Math.random()*((20-10) + 1));
+					return true;
+				}
+
+
+
 			}
 		}
 		

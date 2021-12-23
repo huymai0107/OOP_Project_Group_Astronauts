@@ -28,6 +28,7 @@ public class EnemyTypeBasic extends EnemyType{
 	
 	private Sound explosionSound;
 	
+	
 	public EnemyTypeBasic(double xPos, double yPos, int rows, int columns, EnemyBulletHandler bulletHandler){
 		super(bulletHandler);
 		
