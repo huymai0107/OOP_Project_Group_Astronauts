@@ -98,3 +98,5 @@ public class EnemyBossWeapon extends EnemyWeaponType{
 		this.yPos = yPos;
 	}
 }
+
+//Like and subscribe kenh!
