@@ -3,6 +3,7 @@ package OOP_Project.display;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+//to insert picture
 
 public class imageLoader 
 {
