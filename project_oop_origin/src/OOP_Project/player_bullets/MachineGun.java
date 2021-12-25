@@ -11,7 +11,7 @@ import OOP_Project.game_screen.BasicBlocks;
 public class MachineGun extends PlayerWeaponType{
 
 	private Rectangle bullet;
-	private final double speed = 1.5d;
+	private final double speed = 2.0d;
 	
 	public MachineGun(double xPos, double yPos, int width,int height){
 		this.setxPos(xPos);
