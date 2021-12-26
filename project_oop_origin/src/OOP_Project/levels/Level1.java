@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import OOP_Project.enemy_types.Boss;
 import OOP_Project.enemy_types.EnemyType;
 import OOP_Project.enemy_types.EnemyTypeBasic;
+import OOP_Project.enemy_types.EnemyTypeSpecial;
 import OOP_Project.enemy_types.EnemyTypeUpgraded;
 import OOP_Project.game_screen.BasicBlocks;
 import OOP_Project.game_screen.Player;
@@ -138,9 +139,14 @@ public class Level1 implements SuperLevel{
 		{
 			for(int x = 0; x < 10; x++){
 				EnemyType e = new EnemyTypeBasic(150 + (x * 40), 25 + (y * 40), 1 , 3, bulletHandler);
-				enemies.add(e);
-			}
 				
+				enemies.add(e);
+				if(y==2&x==4) {
+					enemies.remove(e);
+				}
+			}
+			EnemyType d = new EnemyTypeSpecial(310 , 110 , 1 , 3, bulletHandler);
+			enemies.add(d);		
 		}
 //		for(int y = 0; y < 4; y++)
 //			{
