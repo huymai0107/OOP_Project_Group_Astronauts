@@ -143,5 +143,10 @@ public class Player implements KeyListener{
 		playerWeapons.reset();
 	}
 
+	public void hitItem() {
+		setHealth(getHealth()+1);
+		
+	}
+
 
 }
