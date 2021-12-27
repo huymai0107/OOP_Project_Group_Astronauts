@@ -118,6 +118,36 @@ public class GameScreen extends SuperStateMachine {
 		{
 			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 5, Display.HEIGHT - 20, null);
 		}
+		if(player.getHealth() == 6)
+		{
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 5, Display.HEIGHT - 20, null);
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 25, Display.HEIGHT - 20, null);
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 45, Display.HEIGHT - 20, null);
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 65, Display.HEIGHT - 20, null);
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 85, Display.HEIGHT - 20, null);
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 105, Display.HEIGHT - 20, null);
+		}
+		if(player.getHealth() == 7)
+		{
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 5, Display.HEIGHT - 20, null);
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 25, Display.HEIGHT - 20, null);
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 45, Display.HEIGHT - 20, null);
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 65, Display.HEIGHT - 20, null);
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 85, Display.HEIGHT - 20, null);
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 105, Display.HEIGHT - 20, null);
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 125, Display.HEIGHT - 20, null);
+		}
+		if(player.getHealth() == 8)
+		{
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 5, Display.HEIGHT - 20, null);
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 25, Display.HEIGHT - 20, null);
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 45, Display.HEIGHT - 20, null);
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 65, Display.HEIGHT - 20, null);
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 85, Display.HEIGHT - 20, null);
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 105, Display.HEIGHT - 20, null);
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 125, Display.HEIGHT - 20, null);
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 145, Display.HEIGHT - 20, null);
+		}
 
 		
 		blocks.draw(g);
