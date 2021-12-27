@@ -50,7 +50,7 @@ public class Boss extends EnemyType{
 		enemySprite.setLoop(true);
 		
 		shootTimer = new Timer();
-		shootTime = new Random().nextInt(4000);
+		shootTime = new Random().nextInt(12000);
 		
 		explosionSound = new Sound("/OOP_Project/sounds/explosion.wav");
 	}
