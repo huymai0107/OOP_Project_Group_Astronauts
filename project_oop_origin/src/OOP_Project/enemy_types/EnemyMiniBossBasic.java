@@ -14,7 +14,7 @@ import OOP_Project.handler.EnemyBulletHandler;
 import OOP_Project.sound.Sound;
 import OOP_Project.sprite.SpriteAnimation;
 import OOP_Project.timer.Timer;
-public class EnemyTypeSpecial extends EnemyType{
+public class EnemyMiniBossBasic extends EnemyType{
 
 	private double speed = 1d; 
 	Random random;
@@ -27,10 +27,10 @@ public class EnemyTypeSpecial extends EnemyType{
 	private Sound explosionSound;
 	
 	
-	public EnemyTypeSpecial(double xPos, double yPos, int rows, int columns, EnemyBulletHandler bulletHandler){
+	public EnemyMiniBossBasic(double xPos, double yPos, int rows, int columns, EnemyBulletHandler bulletHandler){
 		super(bulletHandler);
 		
-		enemySprite = new SpriteAnimation(xPos, yPos, rows, columns, 300, "/OOP_Project/images/Boss.png");
+		enemySprite = new SpriteAnimation(xPos, yPos, rows, columns, 300, "/OOP_Project/images/InvadersTypeSpecial.png");
 		enemySprite.setWidth(25);
 		enemySprite.setHeight(25);
 		enemySprite.setLimit(2);
@@ -96,12 +96,12 @@ public class EnemyTypeSpecial extends EnemyType{
 		}
 		
 		for(int w = 0; w < player.playerWeapons.weapons.size(); w++) {
-			if(enemys != null && player.playerWeapons.weapons.get(w).collisionRect(((EnemyTypeSpecial)enemys.get(i)).getRect())) 
+			if(enemys != null && player.playerWeapons.weapons.get(w).collisionRect(((EnemyMiniBossBasic)enemys.get(i)).getRect())) 
 			{
 				enemySprite.resetLimit();
 				enemySprite.setAnimationSpeed(60);
 				enemySprite.setPlay(true, true);
-				GameScreen.SCORE += 10 +(int)(Math.random()*((10-2) + 1));
+				GameScreen.SCORE += 50 +(int)(Math.random()*((100-50) + 1));
 				player.setHealth(player.getHealth()+1);
 				return true;
 			}

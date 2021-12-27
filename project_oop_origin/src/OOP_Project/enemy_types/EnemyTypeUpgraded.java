@@ -67,10 +67,17 @@ public class EnemyTypeUpgraded extends EnemyType{
 		enemySprite.setxPos(enemySprite.getxPos() - (delta * speed));
 		this.getRect().x = (int) enemySprite.getxPos();
 		
+		
+
+			
+			
 		if (shootTimer.timerEvent(shootTime)) {
 			getBulletHandler().addBullet(new EnemyUpgradedBullet(getRect().x, getRect().y));
 			shootTime = new Random().nextInt(8000);
 		}
+		if(this.getRect().y >=				
+				blocks.getBlockHeight())
+			player.setHealth(0);
 	}
 
 	@Override
@@ -79,7 +86,7 @@ public class EnemyTypeUpgraded extends EnemyType{
 		enemySprite.setxPos(enemySprite.getxPos() - (delta * speed));
 		this.getRect().x = (int) enemySprite.getxPos();
 		
-		enemySprite.setyPos(enemySprite.getyPos() + (delta * 2));
+		enemySprite.setyPos(enemySprite.getyPos() + (delta * 7));
 		this.getRect().y = (int) enemySprite.getyPos();
 	}
 
@@ -117,7 +124,7 @@ public class EnemyTypeUpgraded extends EnemyType{
 					enemySprite.resetLimit();
 					enemySprite.setAnimationSpeed(60);
 					enemySprite.setPlay(true, true);
-					GameScreen.SCORE += 20+(int)(Math.random()*((20-10) + 1));
+					GameScreen.SCORE += 25+(int)(Math.random()*((50-25) + 1));
 					return true;
 				}
 

@@ -11,7 +11,7 @@ import OOP_Project.game_screen.Player;
 public class EnemyBasicBullet extends EnemyWeaponType{
 
 	private Rectangle bullet;
-	private double speed = 2.5d;
+	private double speed = 1.75d;
 	private int xPos, yPos;
 	
 	public EnemyBasicBullet(double xPos, double yPos) {

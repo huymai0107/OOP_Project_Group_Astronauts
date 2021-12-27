@@ -61,6 +61,10 @@ public class EnemyTypeBasic extends EnemyType{
 			getBulletHandler().addBullet(new EnemyBasicBullet(getRect().x, getRect().y));
 			shootTime = new Random().nextInt(20000);
 		}
+//		if(enemySprite.getyPos() == blocks.getBlockHeight() )
+//		{
+//			player.setHealth(0);
+//		}
 	}
 
 	@Override
@@ -68,7 +72,7 @@ public class EnemyTypeBasic extends EnemyType{
 		speed *= -1.0d;
 		enemySprite.setxPos(enemySprite.getxPos() - (delta * speed));
 		this.getRect().x = (int) enemySprite.getxPos();
-
+		
 	}
 
 	@Override

@@ -11,7 +11,7 @@ import OOP_Project.game_screen.Player;
 public class EnemyBossWeapon extends EnemyWeaponType{
 
 	private Rectangle bullet;
-	private double speed = 2.5d;
+	private double speed = 2d;
 	private int xPos, yPos;
 	
 	public EnemyBossWeapon(double xPos, double yPos) {
@@ -63,7 +63,7 @@ public class EnemyBossWeapon extends EnemyWeaponType{
 		
 		for (int w = 0; w < blocks.wall.size(); w++) {
 			if(bullet.intersects(blocks.wall.get(w))) {
-				for(int i = 0; i <= 4; i++)
+				for(int i = 0; i <= 3; i++)
 					blocks.wall.remove(w + i );
 				bullet = null;
 				break;

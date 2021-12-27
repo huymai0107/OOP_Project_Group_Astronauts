@@ -8,13 +8,19 @@ import java.util.ArrayList;
 public class BasicBlocks {
 
 	public ArrayList<Rectangle> wall = new ArrayList<Rectangle>();
+	private final int BlockHeight = 450;
 	
+	
+	public int getBlockHeight() {
+		return BlockHeight;
+	}
+
 	public BasicBlocks(){
 		
-		basicBlocks(75, 450);
-		basicBlocks(275, 450);
-		basicBlocks(475, 450);
-		basicBlocks(675, 450);
+		basicBlocks(75, BlockHeight);
+		basicBlocks(275, BlockHeight);
+		basicBlocks(475, BlockHeight);
+		basicBlocks(675, BlockHeight);
 	}
 	
 	public void draw(Graphics2D g){
@@ -60,9 +66,9 @@ public class BasicBlocks {
 	
 	public void reset(){
 		wall.clear();
-		basicBlocks(75, 450);
-		basicBlocks(275, 450);
-		basicBlocks(475, 450);
-		basicBlocks(675, 450);
+		basicBlocks(75, BlockHeight);
+		basicBlocks(275, BlockHeight);
+		basicBlocks(475, BlockHeight);
+		basicBlocks(675, BlockHeight);
 	}
 }

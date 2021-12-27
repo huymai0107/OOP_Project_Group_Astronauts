@@ -11,7 +11,7 @@ import OOP_Project.game_screen.Player;
 public class EnemyUpgradedBullet extends EnemyWeaponType{
 
 	private Rectangle bullet;
-	private double speed = 3.5d;
+	private double speed = 2.5d;
 	private int xPos, yPos;
 	
 	public EnemyUpgradedBullet(double xPos, double yPos) {
