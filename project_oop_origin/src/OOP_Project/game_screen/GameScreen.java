@@ -4,6 +4,7 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.util.Random;
 
 import OOP_Project.display.Display;
 import OOP_Project.display.imageLoader;
@@ -52,25 +53,25 @@ public class GameScreen extends SuperStateMachine {
 		
 		if (level.isComplete() ) {
 			
-			int n;
-			n = (Math.random() <= 0.5) ? 1 : 2;
-			switch(n)
+			Random random = new Random();
+			boolean n = random.nextBoolean();
+			if(n)
 			{
-				case 1:
-				{
-					completeTimer.tick(delta);
-					if (completeTimer.isEventReady()) {
-						level.resetStage2();
-					}
-				}
-				case 2:
-				{
-					completeTimer.tick(delta);
-					if (completeTimer.isEventReady()) {
-						level.resetStage3();
-					}
+				completeTimer.tick(delta);
+				if (completeTimer.isEventReady()) {
+					level.resetStage2();
 				}
 			}
+			else {
+				completeTimer.tick(delta);
+				if (completeTimer.isEventReady()) {
+					level.resetStage3();	
+				}
+			}
+				
+			
+			
+		
 		}
 			
 

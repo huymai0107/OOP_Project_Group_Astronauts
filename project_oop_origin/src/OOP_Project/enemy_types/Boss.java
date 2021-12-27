@@ -5,7 +5,6 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.Random;
-
 import OOP_Project.display.Display;
 import OOP_Project.enemy_bullets.EnemyBasicBullet;
 import OOP_Project.enemy_bullets.EnemyBossWeapon;
@@ -51,7 +50,7 @@ public class Boss extends EnemyType{
 		enemySprite.setLoop(true);
 		
 		shootTimer = new Timer();
-		shootTime = new Random().nextInt(800);
+		shootTime = new Random().nextInt(4000);
 		
 		explosionSound = new Sound("/OOP_Project/sounds/explosion.wav");
 	}
@@ -137,7 +136,7 @@ public class Boss extends EnemyType{
 					enemySprite.resetLimit();
 					enemySprite.setAnimationSpeed(60);
 					enemySprite.setPlay(true, true);
-					GameScreen.SCORE += 1000+(int)(Math.random()*((2000-1000) + 1));
+					GameScreen.SCORE += 1000 + (int)(Math.random()*((2000-1000) + 1));
 					player.setHealth(player.getHealth()+3);
 					return true;
 				}

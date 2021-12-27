@@ -148,9 +148,6 @@ public class Level1 implements SuperLevel{
 				enemies.add(e);
 			}		
 		}
-
-
-			
 	}
 	
 
