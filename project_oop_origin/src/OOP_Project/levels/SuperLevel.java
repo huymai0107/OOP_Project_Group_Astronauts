@@ -18,5 +18,5 @@ public interface SuperLevel {
 	void reset();
 	void resetStage1();
 	void resetStage2();
-//	void resetStage3();
+	void resetStage3();
 }
