@@ -66,6 +66,8 @@ public class EnemyTypeSpecial extends EnemyType{
 		speed *= -1.0d;
 		enemySprite.setxPos(enemySprite.getxPos() - (delta * speed));
 		this.getRect().x = (int) enemySprite.getxPos();
+		
+		
 
 	}
 

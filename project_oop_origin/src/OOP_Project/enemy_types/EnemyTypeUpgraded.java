@@ -51,7 +51,7 @@ public class EnemyTypeUpgraded extends EnemyType{
 		enemySprite.setLoop(true);
 		
 		shootTimer = new Timer();
-		shootTime = new Random().nextInt(8000);
+		shootTime = new Random().nextInt(20000);
 		
 		explosionSound = new Sound("/OOP_Project/sounds/explosion.wav");
 	}
