@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import OOP_Project.enemy_types.Boss;
 import OOP_Project.enemy_types.EnemyType;
 import OOP_Project.enemy_types.EnemyTypeBasic;
+import OOP_Project.enemy_types.EnemyTypeSpecial;
 import OOP_Project.enemy_types.EnemyTypeUpgraded;
 import OOP_Project.game_screen.BasicBlocks;
 import OOP_Project.game_screen.Player;
@@ -125,37 +126,31 @@ public class Level1 implements SuperLevel{
 				enemies.add(e);	
 	}
 	public void addEnemiesUpgraded() {
-		for(int y = 0; y < 4; y++)
-		{
-		for(int x = 0; x < 8; x++){
-			EnemyType e = new EnemyTypeUpgraded(150 + (x * 80), 25 + (y * 60), 1 , 3, bulletHandler);
-			enemies.add(e);
+		for(int y = 0; y < 5; y++){
+			for(int x = 0; x < 10; x++){
+				EnemyType e = new EnemyTypeUpgraded(150 + (x * 40), 25 + (y * 40), 1 , 3, bulletHandler);
+				enemies.add(e);
+			}
 		}
-			
-	}
 	}	
 	public void addEnemies() 
 	{
-//		for(int y = 0; y < 5; y++)
-//		{
-//			for(int x = 0; x < 10; x++){
-//				EnemyType e = new EnemyTypeBasic(150 + (x * 40), 25 + (y * 40), 1 , 3, bulletHandler);
-//				enemies.add(e);
-//			}
-//				
-//		}
-		
-		
-		for(int y = 0; y < 4; y++)
+		for(int y = 0; y < 5; y++)
 		{
-		for(int x = 0; x < 8; x++){
-			EnemyType e = new EnemyTypeUpgraded(150 + (x * 80), 25 + (y * 60), 1 , 3, bulletHandler);
-			enemies.add(e);
+			for(int x = 0; x < 11; x++){
+
+				if(y == 2 && x == 5) {					
+					EnemyType d = new EnemyTypeSpecial(150 + (x * 40), 25 + (y * 40), 1 , 3, bulletHandler);
+					enemies.add(d);
+					continue;	
+				}
+				EnemyType e = new EnemyTypeBasic(150 + (x * 40), 25 + (y * 40), 1 , 3, bulletHandler);				
+				enemies.add(e);
+			}		
 		}
+
+
 			
-	}
-
-
 	}
 	
 

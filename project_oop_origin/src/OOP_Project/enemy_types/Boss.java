@@ -138,6 +138,7 @@ public class Boss extends EnemyType{
 					enemySprite.setAnimationSpeed(60);
 					enemySprite.setPlay(true, true);
 					GameScreen.SCORE += 1000+(int)(Math.random()*((2000-1000) + 1));
+					player.setHealth(player.getHealth()+3);
 					return true;
 				}
 			}

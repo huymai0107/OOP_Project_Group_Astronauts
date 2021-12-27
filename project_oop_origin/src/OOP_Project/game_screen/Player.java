@@ -33,7 +33,7 @@ public class Player implements KeyListener{
 		this.startYPos = yPos;
 		this.width = width;
 		this.height = height;
-		this.health = 3;
+		this.health = 5;
 		
 		rect = new Rectangle((int) xPos,(int) yPos+25, width, height-25);
 		
@@ -120,7 +120,7 @@ public class Player implements KeyListener{
 	}
 // reset when losing
 	public void resetfull() {
-		health = 3;
+		health = 5;
 		left = false;
 		right = false;
 		shoot = false;		
@@ -141,11 +141,6 @@ public class Player implements KeyListener{
 		rect.x = (int) xPos;
 		rect.y = (int) yPos+25;
 		playerWeapons.reset();
-	}
-
-	public void hitItem() {
-		setHealth(getHealth()+1);
-		
 	}
 
 
