@@ -88,6 +88,21 @@ public class GameScreen extends SuperStateMachine {
 		g.drawString("Score: " + SCORE, 8, 18);
 		
 		g.setColor(Color.red);
+		if(player.getHealth() == 4)
+		{
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 5, Display.HEIGHT - 20, null);
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 25, Display.HEIGHT - 20, null);
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 45, Display.HEIGHT - 20, null);
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 65, Display.HEIGHT - 20, null);
+		}
+		if(player.getHealth() == 5)
+		{
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 5, Display.HEIGHT - 20, null);
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 25, Display.HEIGHT - 20, null);
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 45, Display.HEIGHT - 20, null);
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 65, Display.HEIGHT - 20, null);
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 85, Display.HEIGHT - 20, null);
+		}
 		if(player.getHealth() == 3)
 		{
 			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 5, Display.HEIGHT - 20, null);

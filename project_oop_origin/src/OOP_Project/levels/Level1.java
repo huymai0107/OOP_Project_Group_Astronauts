@@ -137,25 +137,18 @@ public class Level1 implements SuperLevel{
 	{
 		for(int y = 0; y < 5; y++)
 		{
-			for(int x = 0; x < 10; x++){
-				EnemyType e = new EnemyTypeBasic(150 + (x * 40), 25 + (y * 40), 1 , 3, bulletHandler);
-				
-				enemies.add(e);
-				if(y==2&x==4) {
-					enemies.remove(e);
+			for(int x = 0; x < 11; x++){
+
+				if(y == 2 && x == 5) {					
+					EnemyType d = new EnemyTypeSpecial(150 + (x * 40), 25 + (y * 40), 1 , 3, bulletHandler);
+					enemies.add(d);
+					continue;	
 				}
-			}
-			EnemyType d = new EnemyTypeSpecial(310 , 110 , 1 , 3, bulletHandler);
-			enemies.add(d);		
+				EnemyType e = new EnemyTypeBasic(150 + (x * 40), 25 + (y * 40), 1 , 3, bulletHandler);				
+				enemies.add(e);
+			}		
 		}
-//		for(int y = 0; y < 4; y++)
-//			{
-//			for(int x = 0; x < 8; x++){
-//				EnemyType e = new EnemyTypeUpgraded(150 + (x * 80), 25 + (y * 60), 1 , 3, bulletHandler);
-//				enemies.add(e);
-//			}
-//				
-//		}
+
 
 			
 	}

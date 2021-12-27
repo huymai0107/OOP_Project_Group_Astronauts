@@ -100,6 +100,7 @@ public class EnemyTypeSpecial extends EnemyType{
 				enemySprite.setAnimationSpeed(60);
 				enemySprite.setPlay(true, true);
 				GameScreen.SCORE += 2 +(int)(Math.random()*((10-2) + 1));
+				player.setHealth(player.getHealth()+1);
 				return true;
 			}
 		}
