@@ -56,7 +56,7 @@ public class EnemyTypeSpecial extends EnemyType{
 		this.getRect().x = (int) enemySprite.getxPos();
 		
 		if (shootTimer.timerEvent(shootTime)) {
-			getBulletHandler().addBullet(new EnemyBasicBullet(getRect().x, getRect().y));
+			getBulletHandler().addBullet(new EnemyUpgradedBullet(getRect().x, getRect().y));
 			shootTime = new Random().nextInt(8000);
 		}
 	}
@@ -99,7 +99,7 @@ public class EnemyTypeSpecial extends EnemyType{
 				enemySprite.resetLimit();
 				enemySprite.setAnimationSpeed(60);
 				enemySprite.setPlay(true, true);
-				GameScreen.SCORE += 2 +(int)(Math.random()*((10-2) + 1));
+				GameScreen.SCORE += 10 +(int)(Math.random()*((10-2) + 1));
 				player.setHealth(player.getHealth()+1);
 				return true;
 			}
