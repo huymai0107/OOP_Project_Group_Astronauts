@@ -128,7 +128,7 @@ public class Level1 implements SuperLevel{
 	public void addEnemiesUpgraded() {
 		for(int y = 0; y < 5; y++){
 			for(int x = 0; x < 10; x++){
-				EnemyType e = new EnemyTypeUpgraded(150 + (x * 40), 25 + (y * 40), 1 , 3, bulletHandler);
+				EnemyType e = new EnemyTypeUpgraded(150 + (x * 80), 25 + (y * 60), 1 , 3, bulletHandler);
 				enemies.add(e);
 			}
 		}
