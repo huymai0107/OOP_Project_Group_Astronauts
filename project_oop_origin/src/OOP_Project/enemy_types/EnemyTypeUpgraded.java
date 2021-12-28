@@ -148,7 +148,7 @@ public class EnemyTypeUpgraded extends EnemyType{
 					enemySprite.resetLimit();
 					enemySprite.setAnimationSpeed(60);
 					enemySprite.setPlay(true, true);
-					GameScreen.SCORE += 25+(int)(Math.random()*((50-25) + 1));
+					GameScreen.SCORE += 200+(int)(Math.random()*((400-200) + 1));
 					return true;
 				}
 

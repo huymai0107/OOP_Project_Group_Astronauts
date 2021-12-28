@@ -125,7 +125,7 @@ public class EnemyTypeBasic extends EnemyType{
 				enemySprite.resetLimit();
 				enemySprite.setAnimationSpeed(60);
 				enemySprite.setPlay(true, true);
-				GameScreen.SCORE += 2 +(int)(Math.random()*((10-2) + 1));
+				GameScreen.SCORE += 100 +(int)(Math.random()*((200-100) + 1));
 				return true;
 			}
 		}

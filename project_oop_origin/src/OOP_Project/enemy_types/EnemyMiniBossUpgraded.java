@@ -36,7 +36,7 @@ public class EnemyMiniBossUpgraded extends EnemyType{
 	private Sound explosionSound;
 	
 	private int health;
-	public static int HEALTH = 3;
+	public static int HEALTH = 10;
 	
 	public int getHealth() {
 		return health;
@@ -144,7 +144,7 @@ public class EnemyMiniBossUpgraded extends EnemyType{
 					enemySprite.resetLimit();
 					enemySprite.setAnimationSpeed(60);
 					enemySprite.setPlay(true, true);
-					GameScreen.SCORE += 100+(int)(Math.random()*((200-100) + 1));
+					GameScreen.SCORE += 1000+(int)(Math.random()*((2000-1000) + 1));
 					return true;
 				}
 

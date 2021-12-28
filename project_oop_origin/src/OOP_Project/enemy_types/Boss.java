@@ -86,7 +86,7 @@ public class Boss extends EnemyType{
 		{
 			g.setColor(Color.green);
 		}
-		g.fillRect(200, 10, getHealth()*10, 15);
+		g.fillRect(250, 10, getHealth()*10, 15);
 
 
 
@@ -169,7 +169,7 @@ public class Boss extends EnemyType{
 					enemySprite.resetLimit();
 					enemySprite.setAnimationSpeed(60);
 					enemySprite.setPlay(true, true);
-					GameScreen.SCORE += 1000 + (int)(Math.random()*((2000-1000) + 1));
+					GameScreen.SCORE += 4000 + (int)(Math.random()*((8000-4000) + 1));
 					player.setHealth(player.getHealth()+ 3 );
 					return true;
 				}
