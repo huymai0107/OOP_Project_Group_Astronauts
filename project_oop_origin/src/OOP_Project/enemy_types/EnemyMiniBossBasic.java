@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import OOP_Project.display.Display;
-import OOP_Project.enemy_bullets.EnemyBasicBullet;
+import OOP_Project.enemy_bullets.AddHealth;
+import OOP_Project.enemy_bullets.AddWeapon;
 import OOP_Project.enemy_bullets.EnemyUpgradedBullet;
 import OOP_Project.game_screen.BasicBlocks;
 import OOP_Project.game_screen.GameScreen;
@@ -21,8 +22,15 @@ public class EnemyMiniBossBasic extends EnemyType{
 	private Rectangle rect;
 	private SpriteAnimation enemySprite;
 	
-	private int shootTime;
+	private int shootTime;	
 	private Timer shootTimer;
+	
+	private int itemHealthTime;
+	private Timer itemHealthTimer;
+	
+	
+	private int itemWeaponTime;
+	private Timer itemWeaponTimer;
 	
 	private Sound explosionSound;
 	
@@ -40,6 +48,12 @@ public class EnemyMiniBossBasic extends EnemyType{
 		
 		shootTimer = new Timer();
 		shootTime = new Random().nextInt(8000);
+		
+		itemHealthTimer = new Timer();
+		itemHealthTime = new Random().nextInt(80000);
+		
+		itemWeaponTimer = new Timer();
+		itemWeaponTime = new Random().nextInt(80000);
 		
 		explosionSound = new Sound("/OOP_Project/sounds/explosion.wav");
 	}
@@ -59,6 +73,20 @@ public class EnemyMiniBossBasic extends EnemyType{
 			getBulletHandler().addBullet(new EnemyUpgradedBullet(getRect().x, getRect().y));
 			shootTime = new Random().nextInt(8000);
 		}
+		
+		if (itemHealthTimer.timerEvent(itemHealthTime)) {
+			getBulletHandler().addBullet(new AddHealth(getRect().x, getRect().y));
+			itemHealthTime = new Random().nextInt(80000);
+		}
+		
+		if (itemWeaponTimer.timerEvent(itemWeaponTime)) {
+			getBulletHandler().addBullet(new AddWeapon(getRect().x, getRect().y));
+			itemWeaponTime = new Random().nextInt(80000);
+		}
+		
+		
+		
+		
 	}
 
 	@Override
@@ -102,7 +130,6 @@ public class EnemyMiniBossBasic extends EnemyType{
 				enemySprite.setAnimationSpeed(60);
 				enemySprite.setPlay(true, true);
 				GameScreen.SCORE += 50 +(int)(Math.random()*((100-50) + 1));
-				player.setHealth(player.getHealth()+1);
 				return true;
 			}
 		}

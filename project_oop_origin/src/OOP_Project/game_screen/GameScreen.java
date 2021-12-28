@@ -22,6 +22,9 @@ public class GameScreen extends SuperStateMachine {
 	private EnemyBulletHandler bulletHandler;
 	
 	public static int SCORE = 0;
+	public static int weaponcount = 0;
+	             
+
 	private TickTimer gameOverTimer = new TickTimer(180);
 	private TickTimer completeTimer = new TickTimer(180);
 	
@@ -53,18 +56,24 @@ public class GameScreen extends SuperStateMachine {
 		
 		if (level.isComplete() ) {
 			Random random = new Random();
-			boolean n = random.nextBoolean();
-			completeTimer.tick(delta);
-			if (completeTimer.isEventReady()) 
-				{
-					if(n)					
+			boolean n = random.nextBoolean();	
+				if(n)					
+					{
+					completeTimer.tick(delta);
+					if (completeTimer.isEventReady())
 						level.resetStage2();
-					else 
-						level.resetStage3();							
-				}
+					}
+	
+				else {
+					completeTimer.tick(delta);
+					if (completeTimer.isEventReady())
+						level.resetStage3();
+					}
+				}						
+				
 
 			}
-	}	
+		
 
 	@Override
 	public void draw(Graphics2D g) {
@@ -77,6 +86,7 @@ public class GameScreen extends SuperStateMachine {
 		for(int i = 1; i <= player.getHealth();   i ++)
 		{				
 			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), i*20, Display.HEIGHT - 20, null);
+			
 		}		
 		blocks.draw(g);
 		level.draw(g);

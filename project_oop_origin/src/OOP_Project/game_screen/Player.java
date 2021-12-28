@@ -7,7 +7,7 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
-
+import OOP_Project.game_screen.GameScreen;
 import javax.imageio.ImageIO;
 
 import OOP_Project.display.Display;
@@ -106,6 +106,7 @@ public class Player implements KeyListener{
 	public void hit() {
 		setHealth(getHealth()-1);
 	}
+	
 	
 	public int getHealth() {
 		return health;

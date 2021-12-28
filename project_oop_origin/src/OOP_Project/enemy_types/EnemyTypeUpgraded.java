@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import OOP_Project.display.Display;
+import OOP_Project.enemy_bullets.AddHealth;
+import OOP_Project.enemy_bullets.AddWeapon;
 import OOP_Project.enemy_bullets.EnemyUpgradedBullet;
 import OOP_Project.game_screen.BasicBlocks;
 import OOP_Project.game_screen.GameScreen;
@@ -22,8 +24,15 @@ public class EnemyTypeUpgraded extends EnemyType{
 	private Rectangle rect;
 	private SpriteAnimation enemySprite;
 	
-	private int shootTime;
+	private int shootTime;	
 	private Timer shootTimer;
+	
+	private int itemHealthTime;
+	private Timer itemHealthTimer;
+	
+	
+	private int itemWeaponTime;
+	private Timer itemWeaponTimer;
 	
 	private Sound explosionSound;
 	
@@ -53,6 +62,12 @@ public class EnemyTypeUpgraded extends EnemyType{
 		shootTimer = new Timer();
 		shootTime = new Random().nextInt(20000);
 		
+		itemHealthTimer = new Timer();
+		itemHealthTime = new Random().nextInt(1500000);
+		
+		itemWeaponTimer = new Timer();
+		itemWeaponTime = new Random().nextInt(1500000);
+		
 		explosionSound = new Sound("/OOP_Project/sounds/explosion.wav");
 	}
 	
@@ -75,9 +90,18 @@ public class EnemyTypeUpgraded extends EnemyType{
 			getBulletHandler().addBullet(new EnemyUpgradedBullet(getRect().x, getRect().y));
 			shootTime = new Random().nextInt(8000);
 		}
-		if(this.getRect().y >=				
-				blocks.getBlockHeight())
+		if(this.getRect().y >=blocks.getBlockHeight())						
 			player.setHealth(0);
+		
+		if (itemHealthTimer.timerEvent(itemHealthTime)) {
+			getBulletHandler().addBullet(new AddHealth(getRect().x, getRect().y));
+			itemHealthTime = new Random().nextInt(1500000);
+		}
+		
+		if (itemWeaponTimer.timerEvent(itemWeaponTime)) {
+			getBulletHandler().addBullet(new AddWeapon(getRect().x, getRect().y));
+			itemWeaponTime = new Random().nextInt(1500000);
+		}
 	}
 
 	@Override

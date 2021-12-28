@@ -7,16 +7,17 @@ import java.awt.Rectangle;
 import OOP_Project.display.Display;
 import OOP_Project.display.imageLoader;
 import OOP_Project.game_screen.BasicBlocks;
+import OOP_Project.game_screen.GameScreen;
 import OOP_Project.game_screen.Player;
 
-public class EnemyBossWeapon extends EnemyWeaponType{
+public class AddWeapon extends EnemyWeaponType{
 
 	private Rectangle bullet;
-	private double speed = 2d;
+	private double speed = 1d;
 	private int xPos, yPos;
 	
-	public EnemyBossWeapon(double xPos, double yPos) {
-		bullet = new Rectangle((int) xPos, (int) yPos, 35, 35);
+	public AddWeapon(double xPos, double yPos) {
+		bullet = new Rectangle((int) xPos, (int) yPos, 20, 20);
 		setxPos((int) xPos); 
 		setyPos((int) yPos); 
 	}
@@ -25,8 +26,9 @@ public class EnemyBossWeapon extends EnemyWeaponType{
 	public void draw(Graphics2D g) {
 		if (bullet == null) {
 			return;
-		}		
-		g.drawImage(imageLoader.loadImage("/OOP_Project/images/boom.png"), xPos, yPos, 20, 20, null);
+		}
+		
+		g.drawImage(imageLoader.loadImage("/OOP_Project/images/Upgraded.png"), xPos, yPos, 20, 20, null);
 	}
 
 	@Override
@@ -39,7 +41,17 @@ public class EnemyBossWeapon extends EnemyWeaponType{
 		
 		isOutofBounds();
 		wallCollide(blocks);
+		
+		
+		if(collision(player.getRect())) {
+			player.setHealth(player.getHealth() + 1);
+			GameScreen.weaponcount += 1;
+		}
+			
+		if(GameScreen.weaponcount >= 4 && collision(player.getRect()))
+			GameScreen.SCORE += 1000;
 	}
+
 
 	@Override
 	public boolean collision(Rectangle rect) {
@@ -56,18 +68,17 @@ public class EnemyBossWeapon extends EnemyWeaponType{
 
 	@Override
 	protected void wallCollide(BasicBlocks blocks) {
-		if (bullet == null) {
-			return;
-		}
-		
-		for (int w = 0; w < blocks.wall.size(); w++) {
-			if(bullet.intersects(blocks.wall.get(w))) {
-				for(int i = 0; i <= 3; i++)
-					blocks.wall.remove(w + i );
-				bullet = null;
-				break;
-			}
-		}
+//		if (bullet == null) {
+//			return;
+//		}
+//		
+//		for (int w = 0; w < blocks.wall.size(); w++) {
+//			if(bullet.intersects(blocks.wall.get(w))) {
+//				blocks.wall.remove(w);
+//				bullet = null;
+//				break;
+//			}
+//		}
 	}
 
 	@Override
@@ -97,5 +108,3 @@ public class EnemyBossWeapon extends EnemyWeaponType{
 		this.yPos = yPos;
 	}
 }
-
-//Like and subscribe kenh!
