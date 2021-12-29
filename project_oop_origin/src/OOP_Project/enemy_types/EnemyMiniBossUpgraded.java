@@ -106,7 +106,7 @@ public class EnemyMiniBossUpgraded extends EnemyType{
 		enemySprite.setxPos(enemySprite.getxPos() - (delta * speed));
 		this.getRect().x = (int) enemySprite.getxPos();
 		
-		enemySprite.setyPos(enemySprite.getyPos() + (delta * 7));
+		enemySprite.setyPos(enemySprite.getyPos() + (delta * 5));
 		this.getRect().y = (int) enemySprite.getyPos();
 	}
 
