@@ -145,6 +145,7 @@ public class EnemyTypeUpgraded extends EnemyType{
 			{	hit();
 				if(getHealth() == 0)
 				{
+					GameScreen.combo += 2;
 					enemySprite.resetLimit();
 					enemySprite.setAnimationSpeed(60);
 					enemySprite.setPlay(true, true);

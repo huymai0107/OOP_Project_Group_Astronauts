@@ -139,6 +139,7 @@ public class EnemyMiniBossBasic extends EnemyType{
 			{	
 				if(getHealth() == 0)
 				{
+					GameScreen.combo += 3;
 				enemySprite.resetLimit();
 				enemySprite.setAnimationSpeed(60);
 				enemySprite.setPlay(true, true);

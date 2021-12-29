@@ -140,7 +140,7 @@ public class EnemyMiniBossUpgraded extends EnemyType{
 			if(enemys != null && player.playerWeapons.weapons.get(w).collisionRect(((EnemyMiniBossUpgraded)enemys.get(i)).getRect())) 
 			{	hit();
 				if(getHealth() == 0)
-				{
+				{	GameScreen.combo += 4;
 					enemySprite.resetLimit();
 					enemySprite.setAnimationSpeed(60);
 					enemySprite.setPlay(true, true);

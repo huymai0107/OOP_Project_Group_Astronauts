@@ -58,9 +58,9 @@ public class Player implements KeyListener{
 			else if(GameScreen.combo <= 30)
 				g.setColor(Color.MAGENTA);
 		}		
-		if(GameScreen.comboCheck)
-			g.fillRect(40, Display.HEIGHT - 20, 30*5, 3);
-		else g.fillRect(40, Display.HEIGHT - 20, GameScreen.combo*5, 3);
+		if(GameScreen.comboCheck)	
+			g.fillRect(60, Display.HEIGHT - 20, 30*5, 3);
+		else g.fillRect(60, Display.HEIGHT - 20, GameScreen.combo*5, 3);
 		
 		playerWeapons.draw(g);
 	}
@@ -100,9 +100,7 @@ public class Player implements KeyListener{
 			
 			if(GameScreen.weaponcount <0)
 				GameScreen.weaponcount =0;
-		}
-
-		
+		}		
 			
 	}	
 	

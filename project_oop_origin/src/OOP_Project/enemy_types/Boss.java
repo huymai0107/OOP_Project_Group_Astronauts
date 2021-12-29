@@ -166,6 +166,7 @@ public class Boss extends EnemyType{
 			{	hit();
 				if(getHealth() == 0)
 				{
+					GameScreen.combo += 10;
 					enemySprite.resetLimit();
 					enemySprite.setAnimationSpeed(60);
 					enemySprite.setPlay(true, true);
