@@ -50,6 +50,7 @@ public class GameScreen extends SuperStateMachine {
 				blocks.reset();
 				getStateMachine().setState((byte) 0);
 				SCORE = 0;
+				weaponcount = 0;
 //				System.exit(0);
 			}
 		}
