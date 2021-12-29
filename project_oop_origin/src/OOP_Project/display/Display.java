@@ -138,9 +138,10 @@ public class Display extends Canvas implements Runnable {
 				g.setColor(new Color(52, 140, 196));				
 				for(int i = 0; i <=5; i++)
 					g.fillOval( WIDTH - i*200, HEIGHT*3/4, 300, 300);
-				g.setColor(new Color(207, 147, 60));
+				g.setColor(new Color(255, 255, 120));
 				int baseline = 0;
-				g.fillOval(WIDTH-100,baseline - 100, 200, 200);
+				
+				g.fillOval(WIDTH-120,baseline+50, 50, 50);
 				
 				
 				
