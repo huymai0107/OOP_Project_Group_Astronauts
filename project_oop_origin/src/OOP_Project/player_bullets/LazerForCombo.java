@@ -12,13 +12,13 @@ import OOP_Project.game_screen.BasicBlocks;
 public class LazerForCombo extends PlayerWeaponType{
 
 	private Rectangle bullet;
-	private final double speed = 2.0d;
+	private final double speed = 2.5d;
 	
 	public LazerForCombo(double xPos, double yPos){
 		this.setxPos(xPos);
 		this.setyPos(yPos);
 		
-		this.bullet = new Rectangle((int) getxPos(),(int) getyPos(), 40, 40 );
+		this.bullet = new Rectangle((int) getxPos(),(int) getyPos(), 30, 30 );
 	}
 	
 	@Override

@@ -34,6 +34,17 @@ public class EnemyMiniBossBasic extends EnemyType{
 	
 	private Sound explosionSound;
 	
+	private int health;
+	public static int HEALTH = 5;
+	public int getHealth() {
+		return health;
+	}
+	public void setHealth(int health) {
+		this.health = health;
+	}
+	public void hit() {
+		setHealth(getHealth()-1);
+	}
 	
 	public EnemyMiniBossBasic(double xPos, double yPos, int rows, int columns, EnemyBulletHandler bulletHandler){
 		super(bulletHandler);
@@ -125,7 +136,9 @@ public class EnemyMiniBossBasic extends EnemyType{
 		
 		for(int w = 0; w < player.playerWeapons.weapons.size(); w++) {
 			if(enemys != null && player.playerWeapons.weapons.get(w).collisionRect(((EnemyMiniBossBasic)enemys.get(i)).getRect())) 
-			{
+			{	
+				if(getHealth() == 0)
+				{
 				enemySprite.resetLimit();
 				enemySprite.setAnimationSpeed(60);
 				enemySprite.setPlay(true, true);
@@ -137,6 +150,7 @@ public class EnemyMiniBossBasic extends EnemyType{
 				
 				
 				return true;
+				}
 			}
 		}
 		

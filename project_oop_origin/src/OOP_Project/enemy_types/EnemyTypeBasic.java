@@ -50,13 +50,13 @@ public class EnemyTypeBasic extends EnemyType{
 		enemySprite.setLoop(true);
 		
 		shootTimer = new Timer();
-		shootTime = new Random().nextInt(20000);
+		shootTime = new Random().nextInt(120000);
 		
 		itemHealthTimer = new Timer();
-		itemHealthTime = new Random().nextInt(2000000);
+		itemHealthTime = new Random().nextInt(20000000);
 		
 		itemWeaponTimer = new Timer();
-		itemWeaponTime = new Random().nextInt(2000000);
+		itemWeaponTime = new Random().nextInt(20000000);
 		
 		explosionSound = new Sound("/OOP_Project/sounds/explosion.wav");
 	}
@@ -74,16 +74,16 @@ public class EnemyTypeBasic extends EnemyType{
 		
 		if (shootTimer.timerEvent(shootTime)) {
 			getBulletHandler().addBullet(new EnemyBasicBullet(getRect().x, getRect().y));
-			shootTime = new Random().nextInt(20000);
+			shootTime = new Random().nextInt(120000);
 		}
 		if (itemHealthTimer.timerEvent(itemHealthTime)) {
 			getBulletHandler().addBullet(new AddHealth(getRect().x, getRect().y));
-			itemHealthTime = new Random().nextInt(2000000);
+			itemHealthTime = new Random().nextInt(50000000);
 		}
 		
 		if (itemWeaponTimer.timerEvent(itemWeaponTime)) {
 			getBulletHandler().addBullet(new AddWeapon(getRect().x, getRect().y));
-			itemWeaponTime = new Random().nextInt(2000000);
+			itemWeaponTime = new Random().nextInt(50000000);
 		}
 	}
 

@@ -16,7 +16,7 @@ import OOP_Project.state.SuperStateMachine;
 public class Storyline extends SuperStateMachine implements KeyListener {
 	
 	private Font storyFont = new Font("Upheaval TT (BRK)", Font.PLAIN, 28);
-	private Font startFont = new Font("Upheaval TT (BRK)", Font.BOLD, 60);
+	private Font startFont = new Font("Upheaval TT (BRK)", Font.BOLD, 20);
 	private String storyline1 = "In 2077, Unidentified Flying Objects appear.";
 	private String storyline2 = "the safety of the Earth is Threatened."	;
 	private String storyline3 = "to save the world from invasion";
@@ -35,19 +35,19 @@ public class Storyline extends SuperStateMachine implements KeyListener {
 	@Override
 	public void draw(Graphics2D g) {
 		g.setFont(storyFont);
-		g.setColor(Color.cyan);
-		g.drawString(storyline1, 50, 100);
-		g.drawString(storyline2, 50, 120);
-		g.drawString(storyline3, 50, 140);
-		g.drawString(storyline4, 50, 160);
+		g.setColor(Color.WHITE);
+		g.drawString(storyline1, 50, 200);
+		g.drawString(storyline2, 50, 220);
+		g.drawString(storyline3, 50, 240);
+		g.drawString(storyline4, 50, 260);
 		
 		
 		g.setFont(startFont);
-		g.setColor(Color.red);
-		int startWidth = g.getFontMetrics().stringWidth(start);
-		g.drawString(start, (Display.WIDTH/2)-(startWidth/2), (Display.HEIGHT/2)+150);
-		g.setColor(Color.yellow);
-		g.drawString(start, (Display.WIDTH/2)-(startWidth/2) - 2, (Display.HEIGHT/2)+150 - 2);
+		
+
+//		g.setColor(Color.BLACK);
+		g.drawString(start, Display.WIDTH - 120 , Display.HEIGHT - 20);
+
 		
 		
 

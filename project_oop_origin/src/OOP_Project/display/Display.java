@@ -127,7 +127,25 @@ public class Display extends Canvas implements Runnable {
 			do {
 				
 				Graphics2D g = (Graphics2D) bs.getDrawGraphics();
-				g.drawImage(imageLoader.loadImage("/OOP_Project/images/wallpaper.jpg"), 0, 0, null);
+				g.setColor(new Color(20, 51, 71));
+				g.fillRect(0, 0, WIDTH, HEIGHT);
+		
+
+				g.setColor(new Color(26, 97, 142));
+				for(int i = 0; i <=4; i++)
+				g.fillOval(i*200, HEIGHT-250, 300, 300);
+				
+				
+				g.setColor(new Color(52, 140, 196));				
+				for(int i = 0; i <=4; i++)
+					g.fillOval( HEIGHT - i*200, HEIGHT*3/4, 300, 300);
+				g.setColor(new Color(207, 147, 60));
+				int baseline = 0;
+				g.fillOval(WIDTH-100,baseline - 100, 200, 200);
+				g.setColor(new Color(223, 137, 36));
+				g.fillOval(WIDTH-65,baseline - 100, 200, 200);
+				
+				
 				state.draw(g);
 				g.dispose();
 			} while (bs.contentsRestored());

@@ -24,7 +24,7 @@ public class BasicBlocks {
 	}
 	
 	public void draw(Graphics2D g){
-		Color c = new Color(125, 52, 211);
+		Color c = new Color(52, 192, 140);
 		g.setColor(c);
 		for(int i = 0; i < wall.size(); i++){
 			g.fill(wall.get(i));

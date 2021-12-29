@@ -91,8 +91,9 @@ public class GameScreen extends SuperStateMachine implements KeyListener {
 				g.setColor(Color.green);	
 			else if(player.getHealth() >= 2)
 				g.setColor(Color.yellow);
-			else g.setColor(Color.red);			
-			g.fillRect(13, Display.HEIGHT - 20 - player.getHealth()*20, 5, player.getHealth()*20);
+			else g.setColor(Color.red);
+			g.drawString(Integer.toString(player.getHealth()), 6,Display.HEIGHT - 25);
+//			g.fillRoundRect(6, Display.HEIGHT - 20 - player.getHealth()*20, 20, player.getHealth()*20,10,10);
 			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 5, Display.HEIGHT - 20, null);
 		
 		blocks.draw(g);

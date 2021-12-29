@@ -60,13 +60,13 @@ public class EnemyTypeUpgraded extends EnemyType{
 		enemySprite.setLoop(true);
 		
 		shootTimer = new Timer();
-		shootTime = new Random().nextInt(20000);
+		shootTime = new Random().nextInt(12000);
 		
 		itemHealthTimer = new Timer();
-		itemHealthTime = new Random().nextInt(1500000);
+		itemHealthTime = new Random().nextInt(150000000);
 		
 		itemWeaponTimer = new Timer();
-		itemWeaponTime = new Random().nextInt(1500000);
+		itemWeaponTime = new Random().nextInt(150000000);
 		
 		explosionSound = new Sound("/OOP_Project/sounds/explosion.wav");
 	}
@@ -88,19 +88,19 @@ public class EnemyTypeUpgraded extends EnemyType{
 			
 		if (shootTimer.timerEvent(shootTime)) {
 			getBulletHandler().addBullet(new EnemyUpgradedBullet(getRect().x, getRect().y));
-			shootTime = new Random().nextInt(8000);
+			shootTime = new Random().nextInt(12000);
 		}
 		if(this.getRect().y >=blocks.getBlockHeight())						
 			player.setHealth(0);
 		
 		if (itemHealthTimer.timerEvent(itemHealthTime)) {
 			getBulletHandler().addBullet(new AddHealth(getRect().x, getRect().y));
-			itemHealthTime = new Random().nextInt(1500000);
+			itemHealthTime = new Random().nextInt(180000000);
 		}
 		
 		if (itemWeaponTimer.timerEvent(itemWeaponTime)) {
 			getBulletHandler().addBullet(new AddWeapon(getRect().x, getRect().y));
-			itemWeaponTime = new Random().nextInt(1500000);
+			itemWeaponTime = new Random().nextInt(180000000);
 		}
 	}
 

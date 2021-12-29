@@ -59,7 +59,7 @@ public class PlayerWeapons {
 				weapons.add(new LazerForCombo(xPos + 22, yPos + 15));
 			}
 			else {
-				if(GameScreen.weaponcount == 0)
+				if(GameScreen.weaponcount <= 0)
 				{
 					weapons.add(new MachineGun(xPos + 22, yPos + 15, 5, 5));
 				}	
@@ -68,7 +68,8 @@ public class PlayerWeapons {
 
 				else if(GameScreen.weaponcount == 2)
 					weapons.add(new LazerUpgraded(xPos + 22, yPos + 15));
-				else weapons.add(new LazerLastForm(xPos + 22, yPos + 15));
+				else if(GameScreen.weaponcount > 2)
+					weapons.add(new LazerLastForm(xPos + 22, yPos + 15));
 			}
 			
 			
