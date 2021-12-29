@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import OOP_Project.explosion.ExplosionManager;
 import OOP_Project.player_bullets.Lazer;
+import OOP_Project.player_bullets.LazerForCombo;
 import OOP_Project.player_bullets.LazerLastForm;
 import OOP_Project.player_bullets.LazerUpgraded;
 import OOP_Project.player_bullets.MachineGun;
@@ -45,23 +46,31 @@ public class PlayerWeapons {
 		}
 	}
 	
-	public void shootBullet(double xPos, double yPos, int width, int height){
+	public void shootBullet(double xPos, double yPos){
 		if(timer.timerEvent(250)) {
 			if (shootSound.isPlaying()) {
 				shootSound.stop();
 			}
 			shootSound.play();
-			if(GameScreen.weaponcount == 0)
+			
+			
+			if(GameScreen.comboCheck)
 			{
-				weapons.add(new MachineGun(xPos + 22, yPos + 15, width, height));
+				weapons.add(new LazerForCombo(xPos + 22, yPos + 15));
 			}
-				
-			else if(GameScreen.weaponcount == 1)
-				weapons.add(new Lazer(xPos + 22, yPos + 15));
+			else {
+				if(GameScreen.weaponcount == 0)
+				{
+					weapons.add(new MachineGun(xPos + 22, yPos + 15, 5, 5));
+				}	
+				else if(GameScreen.weaponcount == 1)
+					weapons.add(new Lazer(xPos + 22, yPos + 15));
 
-			else if(GameScreen.weaponcount == 2)
-				weapons.add(new LazerUpgraded(xPos + 22, yPos + 15));
-			else weapons.add(new LazerLastForm(xPos + 22, yPos + 15));
+				else if(GameScreen.weaponcount == 2)
+					weapons.add(new LazerUpgraded(xPos + 22, yPos + 15));
+				else weapons.add(new LazerLastForm(xPos + 22, yPos + 15));
+			}
+			
 			
 		}
 	}

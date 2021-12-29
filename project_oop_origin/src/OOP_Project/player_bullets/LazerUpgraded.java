@@ -12,7 +12,7 @@ import OOP_Project.game_screen.BasicBlocks;
 public class LazerUpgraded extends PlayerWeaponType{
 
 	private Rectangle bullet;
-	private final double speed = 3d;
+	private final double speed = 2.5d;
 	
 	public LazerUpgraded(double xPos, double yPos){
 		this.setxPos(xPos);

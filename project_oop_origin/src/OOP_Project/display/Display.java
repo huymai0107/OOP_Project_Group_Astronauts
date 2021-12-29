@@ -32,7 +32,7 @@ public class Display extends Canvas implements Runnable {
 	   }
 		
 		
-		
+		//create a screen
 		Display display = new Display();
 		JFrame frame = new JFrame();
 		frame.add(display);

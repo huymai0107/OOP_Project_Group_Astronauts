@@ -144,8 +144,12 @@ public class EnemyMiniBossUpgraded extends EnemyType{
 					enemySprite.resetLimit();
 					enemySprite.setAnimationSpeed(60);
 					enemySprite.setPlay(true, true);
-					GameScreen.SCORE += 1000+(int)(Math.random()*((2000-1000) + 1));
-					return true;
+					
+					
+					if(GameScreen.comboCheck)
+						GameScreen.SCORE += (1000+(int)(Math.random()*((2000-1000) + 1)))*2;
+					else GameScreen.SCORE += 1000+(int)(Math.random()*((2000-1000) + 1));
+					
 				}
 
 

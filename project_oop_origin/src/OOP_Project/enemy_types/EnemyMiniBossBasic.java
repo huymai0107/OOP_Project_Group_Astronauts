@@ -129,7 +129,13 @@ public class EnemyMiniBossBasic extends EnemyType{
 				enemySprite.resetLimit();
 				enemySprite.setAnimationSpeed(60);
 				enemySprite.setPlay(true, true);
-				GameScreen.SCORE += 500 +(int)(Math.random()*((1000-500) + 1));
+				
+				
+				if(GameScreen.comboCheck)
+					GameScreen.SCORE += (500 +(int)(Math.random()*((1000-500) + 1)))*2;
+				else GameScreen.SCORE += 500 +(int)(Math.random()*((1000-500) + 1));
+				
+				
 				return true;
 			}
 		}

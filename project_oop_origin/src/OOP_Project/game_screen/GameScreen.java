@@ -25,7 +25,8 @@ public class GameScreen extends SuperStateMachine implements KeyListener {
 	
 	public static int SCORE = 0;
 	public static int weaponcount = 0;
-	             
+	public static int combo = 0;
+	public static boolean comboCheck = false;
 
 	private TickTimer gameOverTimer = new TickTimer(180);
 	private TickTimer completeTimer = new TickTimer(180);
@@ -53,7 +54,6 @@ public class GameScreen extends SuperStateMachine implements KeyListener {
 				getStateMachine().setState((byte) 0);
 				SCORE = 0;
 				weaponcount = 0;
-//				System.exit(0);
 			}
 		}
 		
@@ -84,13 +84,17 @@ public class GameScreen extends SuperStateMachine implements KeyListener {
 		g.setColor(Color.red);
 		g.drawString("Score: " + SCORE, 7, 17);
 		g.setColor(Color.yellow);
-		g.drawString("Score: " + SCORE, 8, 18);
-		g.setColor(Color.red);		
-		for(int i = 1; i <= player.getHealth();   i ++)
-		{				
-			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), i*20, Display.HEIGHT - 20, null);
-			
-		}		
+		g.drawString("Score: " + SCORE, 8, 18);	
+			if(player.getHealth() >= 10)
+			g.setColor(Color.blue);
+			else if(player.getHealth() >= 5)
+				g.setColor(Color.green);	
+			else if(player.getHealth() >= 2)
+				g.setColor(Color.yellow);
+			else g.setColor(Color.red);			
+			g.fillRect(13, Display.HEIGHT - 20, 5, -player.getHealth()*20);
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 5, Display.HEIGHT - 20, null);
+		
 		blocks.draw(g);
 		level.draw(g);
 		player.draw(g);

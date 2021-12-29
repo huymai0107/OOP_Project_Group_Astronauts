@@ -6,32 +6,34 @@ import java.awt.Polygon;
 import java.awt.Rectangle;
 
 import OOP_Project.display.Display;
+import OOP_Project.display.imageLoader;
 import OOP_Project.game_screen.BasicBlocks;
 
-public class Lazer extends PlayerWeaponType{
+public class LazerForCombo extends PlayerWeaponType{
 
 	private Rectangle bullet;
-	private final double speed = 2.5d;
+	private final double speed = 2.0d;
 	
-	public Lazer(double xPos, double yPos){
+	public LazerForCombo(double xPos, double yPos){
 		this.setxPos(xPos);
 		this.setyPos(yPos);
 		
-		this.bullet = new Rectangle((int) getxPos(),(int) getyPos(), 5, 10);
+		this.bullet = new Rectangle((int) getxPos(),(int) getyPos(), 40, 40 );
 	}
 	
 	@Override
 	public void draw(Graphics2D g) {
 		if(bullet == null)
-			return;	
-		g.setColor(Color.cyan);
-		g.fill(bullet);
+			return;
+		g.drawImage(imageLoader.loadImage("/OOP_Project/images/LazerForCombo.png"), (int) getxPos(),(int) getyPos(), 30, 30, null);
+		g.setColor(Color.red);
 	}
 
 	@Override
 	public void update(double delta, BasicBlocks blocks) {
 		if(bullet == null)
-			return;		
+			return;
+		
 		this.setyPos(getyPos() - (delta * speed));
 		bullet.y = (int) this.getyPos();
 		wallCollide(blocks);

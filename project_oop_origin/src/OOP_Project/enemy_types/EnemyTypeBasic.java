@@ -121,11 +121,15 @@ public class EnemyTypeBasic extends EnemyType{
 		
 		for(int w = 0; w < player.playerWeapons.weapons.size(); w++) {
 			if(enemys != null && player.playerWeapons.weapons.get(w).collisionRect(((EnemyTypeBasic)enemys.get(i)).getRect())) 
-			{
+			{	
+				GameScreen.combo += 1;
 				enemySprite.resetLimit();
 				enemySprite.setAnimationSpeed(60);
 				enemySprite.setPlay(true, true);
-				GameScreen.SCORE += 100 +(int)(Math.random()*((200-100) + 1));
+				
+				if(GameScreen.comboCheck)
+					GameScreen.SCORE += (100 +(int)(Math.random()*((200-100) + 1)))*2;
+				else GameScreen.SCORE += 100 +(int)(Math.random()*((200-100) + 1));
 				return true;
 			}
 		}

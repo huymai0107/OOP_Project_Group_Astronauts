@@ -50,7 +50,13 @@ public class AddWeapon extends EnemyWeaponType{
 			
 		if(GameScreen.weaponcount >= 4 && collision(player.getRect()))
 			GameScreen.SCORE += 1000;
+		
+	
+	
+	
 	}
+	
+	
 
 
 	@Override

@@ -24,12 +24,17 @@ public class EnemyBulletHandler {
 	}
 	
 	public void update(double delta, BasicBlocks blocks, Player player) {
+		int healthcheck = player.getHealth();
 		for (int i = 0; i < weaponTypes.size(); i++) {
 			weaponTypes.get(i).update(delta, blocks, player);		
 			if (weaponTypes.get(i).collision(player.getRect())) {
 				ExplosionManager.createPixelExplosion(weaponTypes.get(i).getxPos(), weaponTypes.get(i).getyPos());
 				weaponTypes.remove(i);
-				player.hit();
+				player.hit();	
+				if(player.getHealth() == healthcheck - 1)
+					player.setHitcheck(true);
+					
+				
 			}
 		}
 	}

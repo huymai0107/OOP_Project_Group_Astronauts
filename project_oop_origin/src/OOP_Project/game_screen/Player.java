@@ -1,29 +1,32 @@
 package OOP_Project.game_screen;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.net.URL;
-import OOP_Project.game_screen.GameScreen;
-import javax.imageio.ImageIO;
-
 import OOP_Project.display.Display;
+import OOP_Project.display.imageLoader;
 
 public class Player implements KeyListener{
 	
-	private final double speed = 2d;
+	private double speed = 2d;
+	
 	private int health;
-	private BufferedImage pSprite;
+	private boolean hitcheck = false;
 	private Rectangle rect;
 	private double xPos, yPos, startXPos, startYPos;
 	private int width, height;
 	private BasicBlocks blocks;
-	
 	private boolean left = false, right = false, shoot = false;
 	
+	public boolean isHitcheck() {
+		return hitcheck;
+	}
+
+	public void setHitcheck(boolean hitcheck) {
+		this.hitcheck = hitcheck;
+	}
 	public PlayerWeapons playerWeapons;
 	
 	public Player(double xPos, double yPos, int width, int height, BasicBlocks blocks){
@@ -36,18 +39,29 @@ public class Player implements KeyListener{
 		this.health = 5;
 		
 		rect = new Rectangle((int) xPos,(int) yPos+25, width, height-25);
-		
-		try{
-			URL url = this.getClass().getResource("/OOP_Project/images/Player.png");
-			pSprite = ImageIO.read(url);
-		}
-		catch(IOException e){};
 		this.blocks = blocks;
 		playerWeapons = new PlayerWeapons();
 	}
 	
 	public void draw(Graphics2D g){
-		g.drawImage(pSprite,(int) xPos,(int) yPos, width, height, null);
+		
+		if(GameScreen.comboCheck)
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Player2.png"),(int) xPos,(int) yPos, width, height, null);
+		else g.drawImage(imageLoader.loadImage("/OOP_Project/images/Player.png"),(int) xPos,(int) yPos, width, height, null);
+		if(GameScreen.comboCheck)
+			g.setColor(Color.red);
+		else {
+			if(GameScreen.combo <= 10)
+				g.setColor(Color.cyan);
+			else if(GameScreen.combo <= 20)
+				g.setColor(Color.blue);
+			else if(GameScreen.combo <= 30)
+				g.setColor(Color.MAGENTA);
+		}		
+		if(GameScreen.comboCheck)
+			g.fillRect(250, Display.HEIGHT - 20, 30*15, 3);
+		else g.fillRect(250, Display.HEIGHT - 20, GameScreen.combo*15, 3);
+		
 		playerWeapons.draw(g);
 	}
 	
@@ -61,9 +75,32 @@ public class Player implements KeyListener{
 		}
 		playerWeapons.update(delta, blocks);
 		if(shoot){
-			playerWeapons.shootBullet(xPos, yPos, 5, 5);
+			playerWeapons.shootBullet(xPos, yPos);
 		}
-	}
+		
+		
+		 if(GameScreen.combo >= 30)
+		{
+			 GameScreen.comboCheck = true;
+		}
+		 else GameScreen.comboCheck = false;
+			
+		if(GameScreen.comboCheck)
+		{	
+			speed = 3.0d;
+		}
+		else speed = 2.5d;
+		
+			if(hitcheck)
+		{
+			GameScreen.combo = 0;
+			hitcheck = false;
+			GameScreen.comboCheck = false;
+		}
+
+		
+			
+	}	
 	
 	@Override
 	public void keyPressed(KeyEvent e) {
@@ -76,12 +113,23 @@ public class Player implements KeyListener{
 		
 		if (key == KeyEvent.VK_SPACE){
 			shoot = true;
-
 		}
+		//exit
 		if (e.getKeyCode() == KeyEvent.VK_ESCAPE) 
 		{
 			System.exit(0);			
 		}
+		
+		// cheat
+		if (e.getKeyCode() == KeyEvent.VK_H) 
+		{	
+			setHealth(getHealth()+5);
+			GameScreen.weaponcount += 5;
+				
+		}
+
+
+		
 	}
 
 	@Override
@@ -99,11 +147,10 @@ public class Player implements KeyListener{
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		System.out.println("pressed");
 		
 	}
 	
-	public void hit() {
+	public void hit() {	
 		setHealth(getHealth()-1);
 	}
 	
