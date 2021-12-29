@@ -25,8 +25,9 @@ public class EnemyBossWeapon extends EnemyWeaponType{
 	public void draw(Graphics2D g) {
 		if (bullet == null) {
 			return;
-		}		
-		g.drawImage(imageLoader.loadImage("/OOP_Project/images/boom.png"), xPos, yPos, 20, 20, null);
+		}
+		g.setColor(new Color(255, 138, 0));
+		g.fillRect((int) xPos, (int) yPos, 35, 35);
 	}
 
 	@Override
