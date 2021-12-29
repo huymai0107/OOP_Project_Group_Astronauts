@@ -13,14 +13,17 @@ import OOP_Project.display.Display;
 import OOP_Project.state.StateMachine;
 import OOP_Project.state.SuperStateMachine;
 
-public class MenuScreen extends SuperStateMachine implements KeyListener {
+public class Storyline extends SuperStateMachine implements KeyListener {
 	
-	private Font tittleFont = new Font("Upheaval TT (BRK)", Font.BOLD, 88);
-	private Font startFont = new Font("Upheaval TT (BRK)", Font.BOLD, 32);
-	private String tittle = "Space Invaders";
+	private Font storyFont = new Font("Upheaval TT (BRK)", Font.PLAIN, 28);
+	private Font startFont = new Font("Upheaval TT (BRK)", Font.BOLD, 60);
+	private String storyline1 = "In 2077, Unidentified Flying Objects appear.";
+	private String storyline2 = "the safety of the Earth is Threatened."	;
+	private String storyline3 = "to save the world from invasion";
+	private String storyline4 = "- An Unique Aircraft is created.";
 	private String start = "- Enter -";
 	
-	public MenuScreen(StateMachine stateMachine) {
+	public Storyline(StateMachine stateMachine) {
 		super(stateMachine);
 	}
 
@@ -31,17 +34,20 @@ public class MenuScreen extends SuperStateMachine implements KeyListener {
 
 	@Override
 	public void draw(Graphics2D g) {
-		g.setFont(tittleFont);
-		int tittleWidth = g.getFontMetrics().stringWidth(tittle);
-		g.setColor(Color.red);
-		g.drawString(tittle, ((Display.WIDTH/2)-(tittleWidth/2))-2, (Display.HEIGHT/2)-125);
-		g.setColor(Color.yellow);
-		g.drawString(tittle, (Display.WIDTH/2)-(tittleWidth/2), (Display.HEIGHT/2)- 125 - 2);
+		g.setFont(storyFont);
+		g.setColor(Color.cyan);
+		g.drawString(storyline1, 50, 100);
+		g.drawString(storyline2, 50, 120);
+		g.drawString(storyline3, 50, 140);
+		g.drawString(storyline4, 50, 160);
+		
 		
 		g.setFont(startFont);
-		g.setColor(Color.white);
+		g.setColor(Color.red);
 		int startWidth = g.getFontMetrics().stringWidth(start);
-		g.drawString(start, (Display.WIDTH/2)-(startWidth/2), (Display.HEIGHT/2)+75);
+		g.drawString(start, (Display.WIDTH/2)-(startWidth/2), (Display.HEIGHT/2)+150);
+		g.setColor(Color.yellow);
+		g.drawString(start, (Display.WIDTH/2)-(startWidth/2) - 2, (Display.HEIGHT/2)+150 - 2);
 		
 		
 
@@ -68,7 +74,7 @@ public class MenuScreen extends SuperStateMachine implements KeyListener {
 		}
 		else if(e.getKeyCode() == KeyEvent.VK_ENTER)
 		{
-			getStateMachine().setState((byte) 1);
+			getStateMachine().setState((byte) 2);
 		}
 	}
 

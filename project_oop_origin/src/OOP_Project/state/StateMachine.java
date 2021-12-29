@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import OOP_Project.game_screen.GameScreen;
 import OOP_Project.menu_screen.MenuScreen;
+import OOP_Project.menu_screen.Storyline;
 
 public class StateMachine {
 
@@ -16,8 +17,12 @@ public class StateMachine {
 	public StateMachine(Canvas canvas){
 		SuperStateMachine game = new GameScreen(this);
 		SuperStateMachine menu = new MenuScreen(this);
+		SuperStateMachine Storyline = new Storyline(this);
+
 		states.add(menu);
+		states.add(Storyline);
 		states.add(game);
+
 		
 		this.canvas = canvas;
 	}

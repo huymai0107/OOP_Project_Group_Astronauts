@@ -4,6 +4,8 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Random;
 
 import OOP_Project.display.Display;
@@ -14,7 +16,7 @@ import OOP_Project.state.StateMachine;
 import OOP_Project.state.SuperStateMachine;
 import OOP_Project.timer.TickTimer;
 
-public class GameScreen extends SuperStateMachine {
+public class GameScreen extends SuperStateMachine implements KeyListener {
 	private Player player;
 	private BasicBlocks blocks;
 	private Level1 level;
@@ -119,6 +121,27 @@ public class GameScreen extends SuperStateMachine {
 	@Override
 	public void init(Canvas canvas) {
 		canvas.addKeyListener(player);
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		if(e.getKeyCode() == KeyEvent.VK_1)
+		{
+			getStateMachine().setState((byte) 0);
+		}
+		
 	}
 
 }
