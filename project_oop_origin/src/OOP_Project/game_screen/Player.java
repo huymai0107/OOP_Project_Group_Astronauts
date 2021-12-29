@@ -96,6 +96,7 @@ public class Player implements KeyListener{
 			GameScreen.combo = 0;
 			hitcheck = false;
 			GameScreen.comboCheck = false;
+			GameScreen.weaponcount -=1;
 		}
 
 		

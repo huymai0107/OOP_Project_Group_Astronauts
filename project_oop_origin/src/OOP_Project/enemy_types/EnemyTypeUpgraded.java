@@ -37,7 +37,7 @@ public class EnemyTypeUpgraded extends EnemyType{
 	private Sound explosionSound;
 	
 	private int health;
-	public static int HEALTH = 3;
+	public static int HEALTH = 2;
 	
 	public int getHealth() {
 		return health;

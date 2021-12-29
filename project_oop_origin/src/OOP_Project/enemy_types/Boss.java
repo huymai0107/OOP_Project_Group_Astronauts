@@ -65,7 +65,7 @@ public class Boss extends EnemyType{
 //		itemHealthTime = new Random().nextInt(50000);
 //		
 		itemWeaponTimer = new Timer();
-		itemWeaponTime = new Random().nextInt(50000);
+		itemWeaponTime = new Random().nextInt(30000);
 		explosionSound = new Sound("/OOP_Project/sounds/explosion.wav");
 	}
 	
@@ -112,7 +112,7 @@ public class Boss extends EnemyType{
 //		
 		if (itemWeaponTimer.timerEvent(itemWeaponTime)) {
 			getBulletHandler().addBullet(new AddWeapon(getRect().x, getRect().y));
-			itemWeaponTime = new Random().nextInt(50000);
+			itemWeaponTime = new Random().nextInt(30000);
 		}
 		
 		if(this.getRect().y >=				
