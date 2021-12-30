@@ -139,8 +139,12 @@ public class Player implements KeyListener{
 		if (e.getKeyCode() == KeyEvent.VK_H) 
 		{	
 			setHealth(getHealth()+1);
-			GameScreen.weaponcount += 1;
-				
+			GameScreen.weaponcount += 1;	
+		}
+		
+		if (e.getKeyCode() == KeyEvent.VK_J) 
+		{	
+			GameScreen.combo = 30;
 		}
 
 
