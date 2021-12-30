@@ -1,6 +1,5 @@
 package OOP_Project.enemy_bullets;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
@@ -60,17 +59,7 @@ public class AddHealth extends EnemyWeaponType{
 
 	@Override
 	protected void wallCollide(BasicBlocks blocks) {
-//		if (bullet == null) {
-//			return;
-//		}
-//		
-//		for (int w = 0; w < blocks.wall.size(); w++) {
-//			if(bullet.intersects(blocks.wall.get(w))) {
-//				blocks.wall.remove(w);
-//				bullet = null;
-//				break;
-//			}
-//		}
+		// this item can go throught the wall
 	}
 
 	@Override

@@ -33,8 +33,6 @@ public class EnemyBulletHandler {
 				player.hit();	
 				if(player.getHealth() == healthcheck - 1)
 					player.setHitcheck(true);
-					
-				
 			}
 		}
 	}

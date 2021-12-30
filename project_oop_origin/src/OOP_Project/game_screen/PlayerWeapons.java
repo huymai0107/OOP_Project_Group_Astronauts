@@ -53,7 +53,7 @@ public class PlayerWeapons {
 			}
 			shootSound.play();
 			
-			
+			//bullet follow to weapon count
 			if(GameScreen.comboCheck)
 			{
 				weapons.add(new LazerForCombo(xPos + 22, yPos + 15));

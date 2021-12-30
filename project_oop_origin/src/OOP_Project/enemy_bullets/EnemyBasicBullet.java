@@ -25,7 +25,6 @@ public class EnemyBasicBullet extends EnemyWeaponType{
 		if (bullet == null) {
 			return;
 		}
-		
 		g.setColor(Color.yellow);
 		g.fill(bullet);
 	}
@@ -69,7 +68,6 @@ public class EnemyBasicBullet extends EnemyWeaponType{
 			}
 		}
 	}
-
 	@Override
 	protected void isOutofBounds() {
 		if(bullet != null && bullet.y < 0 || bullet.y > Display.HEIGHT || bullet.x < 0 || bullet.x > Display.WIDTH){

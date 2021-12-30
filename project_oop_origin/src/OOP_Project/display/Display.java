@@ -129,14 +129,12 @@ public class Display extends Canvas implements Runnable {
 			do {
 				
 				Graphics2D g = (Graphics2D) bs.getDrawGraphics();
+// draw sky and cloud
 				g.setColor(new Color(13, 25, 43));
 				g.fillRect(0, 0, WIDTH, HEIGHT);
-		
 				g.setColor(new Color(27, 52, 89));
 				for(int i = 0; i <=5; i++)
 				g.fillOval(WIDTH - i*200, HEIGHT-220, 400, 400);
-				
-				
 				g.setColor(new Color(35, 68, 117));				
 				for(int i = 0; i <=5; i++)
 					g.fillOval( WIDTH - i*200,HEIGHT-150, 300, 300);
@@ -146,11 +144,11 @@ public class Display extends Canvas implements Runnable {
 				
 				
 				
-				
+// draw moon
 				g.setColor(new Color(255, 255, 120));			
 				g.fillOval(WIDTH-120,50, 50, 50);
 				
-
+// draw star
 				int nSpikes = 5;
 				int[] ctrX = {
 						632,

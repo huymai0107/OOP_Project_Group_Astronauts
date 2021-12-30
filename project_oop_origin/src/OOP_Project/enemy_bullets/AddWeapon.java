@@ -47,18 +47,14 @@ public class AddWeapon extends EnemyWeaponType{
 			player.setHealth(player.getHealth() + 1);
 			GameScreen.weaponcount += 1;
 		}
-			
+		// when reach the max level of bullet, everytime claming item will increase score by 10000	
 		if(GameScreen.weaponcount >= 4 && collision(player.getRect()))
-			GameScreen.SCORE += 1000;
+			GameScreen.SCORE += 10000;
 		
 	
 	
 	
 	}
-	
-	
-
-
 	@Override
 	public boolean collision(Rectangle rect) {
 		if (bullet != null && bullet.intersects(rect)) {
@@ -74,17 +70,7 @@ public class AddWeapon extends EnemyWeaponType{
 
 	@Override
 	protected void wallCollide(BasicBlocks blocks) {
-//		if (bullet == null) {
-//			return;
-//		}
-//		
-//		for (int w = 0; w < blocks.wall.size(); w++) {
-//			if(bullet.intersects(blocks.wall.get(w))) {
-//				blocks.wall.remove(w);
-//				bullet = null;
-//				break;
-//			}
-//		}
+		// this item can go throught the wall
 	}
 
 	@Override

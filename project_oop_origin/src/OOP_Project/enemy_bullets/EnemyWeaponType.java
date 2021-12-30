@@ -19,4 +19,6 @@ public abstract class EnemyWeaponType {
 	
 	public abstract int getxPos();
 	public abstract int getyPos();
+	
+	// all of enemy weapons and items base on the basic type with some modification 
 }

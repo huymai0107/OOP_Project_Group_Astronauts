@@ -15,19 +15,22 @@ public class Player implements KeyListener{
 	
 	private int health;
 	private boolean hitcheck = false;
+	
 	private Rectangle rect;
 	private double xPos, yPos, startXPos, startYPos;
 	private int width, height;
 	private BasicBlocks blocks;
 	private boolean left = false, right = false, shoot = false;
-	
+
 	public boolean isHitcheck() {
 		return hitcheck;
 	}
-
 	public void setHitcheck(boolean hitcheck) {
 		this.hitcheck = hitcheck;
 	}
+	
+	
+	
 	public PlayerWeapons playerWeapons;
 	
 	public Player(double xPos, double yPos, int width, int height, BasicBlocks blocks){
@@ -45,21 +48,21 @@ public class Player implements KeyListener{
 	}
 	
 	public void draw(Graphics2D g){
-		
+		//draw aircraft
 		if(GameScreen.comboCheck)
 			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Player2.png"),(int) xPos,(int) yPos, width, height, null);
 		else g.drawImage(imageLoader.loadImage("/OOP_Project/images/Player.png"),(int) xPos,(int) yPos, width, height, null);
 
+		
+		//draw combo bar	
 			if(GameScreen.combo <= 10)
 				g.setColor(new Color(221, 66, 245));
 			else if(GameScreen.combo <= 20)
 				g.setColor(new Color(242, 66, 245));
 			else if(GameScreen.combo <= 30)
-				g.setColor(new Color(245, 66, 176));
-			
+				g.setColor(new Color(245, 66, 176));			
 		if(GameScreen.comboCheck)	
 		{
-//			g.fillRect(60, Display.HEIGHT - 20, 30*5, 3);
 			Font S = new Font("Upheaval TT (BRK)", Font.BOLD, 40);
 			g.setFont(S);
 			g.setColor(new Color(24, 97, 251));
@@ -68,7 +71,6 @@ public class Player implements KeyListener{
 			g.setColor(new Color(254, 60, 50));
 			g.drawString("S", 31*5 + 10 - 2,Display.HEIGHT - 10 - 2);
 		}
-
 		else g.fillRect(80, Display.HEIGHT - 20, GameScreen.combo*5, 5);
 		
 		playerWeapons.draw(g);
@@ -120,15 +122,18 @@ public class Player implements KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
+		//key to move
 		if(key == KeyEvent.VK_D || key == KeyEvent.VK_RIGHT){
 			right = true;
-		}else if (key == KeyEvent.VK_A || key == KeyEvent.VK_LEFT){
+		}
+		else if (key == KeyEvent.VK_A || key == KeyEvent.VK_LEFT){
 			left = true;
 		}
-		
 		if (key == KeyEvent.VK_SPACE){
 			shoot = true;
 		}
+		
+		
 		//exit
 		if (e.getKeyCode() == KeyEvent.VK_ESCAPE) 
 		{
@@ -146,8 +151,6 @@ public class Player implements KeyListener{
 		{	
 			GameScreen.combo = 30;
 		}
-
-
 		
 	}
 
@@ -185,7 +188,7 @@ public class Player implements KeyListener{
 	public Rectangle getRect() {
 		return rect;
 	}
-// reset when losing
+// start game 
 	public void resetfull() {
 		health = 5;
 		left = false;

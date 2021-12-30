@@ -45,7 +45,7 @@ public class GameScreen extends SuperStateMachine implements KeyListener {
 		
 		player.update(delta);
 		level.update(delta, blocks);
-		
+	// reset all stats	
 		if (level.isGameOver()) {
 			gameOverTimer.tick(delta);
 			if (gameOverTimer.isEventReady()) {
@@ -54,9 +54,10 @@ public class GameScreen extends SuperStateMachine implements KeyListener {
 				getStateMachine().setState((byte) 0);
 				SCORE = 0;
 				weaponcount = 0;
+				combo = 0;
 			}
 		}
-		
+// after finishing first stage, the next stage will be chosen randomly between boss and upgraded enemy
 		if (level.isComplete() ) {
 			Random random = new Random();
 			boolean n = random.nextBoolean();	
@@ -80,11 +81,14 @@ public class GameScreen extends SuperStateMachine implements KeyListener {
 
 	@Override
 	public void draw(Graphics2D g) {
+		//draw health score
 		g.setFont(new Font("Upheaval TT (BRK)", Font.PLAIN, 30));
 		g.setColor(Color.red);
 		g.drawString("Score: " + SCORE, 7, 17);
 		g.setColor(Color.yellow);
-		g.drawString("Score: " + SCORE, 8, 18);	
+		g.drawString("Score: " + SCORE, 8, 18);
+		
+		//draw health counter
 			if(player.getHealth() >= 10)
 			g.setColor(new Color(78, 66, 245));
 			else if(player.getHealth() >= 5)
@@ -93,10 +97,9 @@ public class GameScreen extends SuperStateMachine implements KeyListener {
 				g.setColor(new Color(245, 227, 66));
 			else g.setColor(new Color(245, 66, 66));
 			g.drawString(Integer.toString(player.getHealth()), 6,Display.HEIGHT - 25);
-//			g.fillRoundRect(6, Display.HEIGHT - 20 - player.getHealth()*20, 20, player.getHealth()*20,10,10);
 			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 5, Display.HEIGHT - 20, null);
 			
-			
+		//draw upgrade counter
 			g.setColor(Color.white);
 			g.drawString(Integer.toString(GameScreen.weaponcount), 37,Display.HEIGHT - 25);	
 			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Lazer.png"), 35, Display.HEIGHT - 21, null);
@@ -106,7 +109,7 @@ public class GameScreen extends SuperStateMachine implements KeyListener {
 		player.draw(g);
 		
 
-		 
+		 //game over pop-up
 		if (level.isGameOver()) {
 			g.setFont(new Font("Upheaval TT (BRK)", Font.BOLD, 64));
 			g.setColor(Color.YELLOW);
@@ -116,6 +119,7 @@ public class GameScreen extends SuperStateMachine implements KeyListener {
 			g.setColor(Color.RED);
 			g.drawString(gameOver, (Display.WIDTH/2)-(gameOverWidth/2)+2, (Display.HEIGHT/2)+2);
 		}
+		// finish stage pop-up
 		
 		if (level.isCompleteBanner()) {
 			g.setFont(new Font("Upheaval TT (BRK)", Font.BOLD, 60));
@@ -147,10 +151,6 @@ public class GameScreen extends SuperStateMachine implements KeyListener {
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		if(e.getKeyCode() == KeyEvent.VK_1)
-		{
-			getStateMachine().setState((byte) 0);
-		}
 		
 	}
 
