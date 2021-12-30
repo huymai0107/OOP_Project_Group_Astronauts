@@ -98,13 +98,7 @@ public class GameScreen extends SuperStateMachine implements KeyListener {
 			
 			
 			g.setColor(Color.white);
-			
-			if(GameScreen.comboCheck)
-			{
-				g.setColor(Color.orange);
-				g.drawString("S", 31,Display.HEIGHT - 25);	
-			}
-			else g.drawString(Integer.toString(GameScreen.weaponcount), 31,Display.HEIGHT - 25);	
+			g.drawString(Integer.toString(GameScreen.weaponcount), 31,Display.HEIGHT - 25);	
 			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Lazer.png"), 30, Display.HEIGHT - 21, null);
 		
 		blocks.draw(g);

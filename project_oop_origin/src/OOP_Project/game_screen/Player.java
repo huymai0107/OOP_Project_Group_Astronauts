@@ -59,7 +59,14 @@ public class Player implements KeyListener{
 				g.setColor(Color.MAGENTA);
 		}		
 		if(GameScreen.comboCheck)	
-			g.fillRect(60, Display.HEIGHT - 20, 30*5, 3);
+		{
+//			g.fillRect(60, Display.HEIGHT - 20, 30*5, 3);
+			g.setColor(Color.red);
+			g.drawString("S", 30*5 + 10,Display.HEIGHT - 10 + 2) ;	
+			g.setColor(Color.orange);
+			g.drawString("S", 31*5 + 10,Display.HEIGHT - 10 + 2);
+		}
+
 		else g.fillRect(60, Display.HEIGHT - 20, GameScreen.combo*5, 3);
 		
 		playerWeapons.draw(g);
@@ -95,8 +102,12 @@ public class Player implements KeyListener{
 		{
 			GameScreen.combo = 0;
 			hitcheck = false;
+			if(GameScreen.comboCheck)
+			{
+				
+			}
+			else GameScreen.weaponcount -=1;
 			GameScreen.comboCheck = false;
-			GameScreen.weaponcount -=1;
 			
 			if(GameScreen.weaponcount <0)
 				GameScreen.weaponcount =0;
