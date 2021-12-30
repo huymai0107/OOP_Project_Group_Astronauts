@@ -90,7 +90,7 @@ public class GameScreen extends SuperStateMachine implements KeyListener {
 		
 		//draw health counter
 			if(player.getHealth() >= 10)
-			g.setColor(new Color(78, 66, 245));
+			g.setColor(Color.cyan);
 			else if(player.getHealth() >= 5)
 				g.setColor(new Color(90, 245, 66));	
 			else if(player.getHealth() >= 2)
