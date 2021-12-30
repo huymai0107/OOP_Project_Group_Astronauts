@@ -136,8 +136,8 @@ public class Player implements KeyListener{
 		// cheat
 		if (e.getKeyCode() == KeyEvent.VK_H) 
 		{	
-			setHealth(getHealth()+5);
-			GameScreen.weaponcount += 5;
+			setHealth(getHealth()+1);
+			GameScreen.weaponcount += 1;
 				
 		}
 

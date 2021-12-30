@@ -188,7 +188,7 @@ public class Display extends Canvas implements Runnable {
 						43,	
 						259,	
 						177,	
-						357183,
+						357,
 						44,	
 						115,	
 						123,	
@@ -215,10 +215,6 @@ public class Display extends Canvas implements Runnable {
 						306,
 						365,
 				};
-
-				
-				
-
 		        
 		        double RADIUS = 3;
 		        double SPIKINESS = 0.5;
