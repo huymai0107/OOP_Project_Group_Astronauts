@@ -86,20 +86,20 @@ public class GameScreen extends SuperStateMachine implements KeyListener {
 		g.setColor(Color.yellow);
 		g.drawString("Score: " + SCORE, 8, 18);	
 			if(player.getHealth() >= 10)
-			g.setColor(Color.blue);
+			g.setColor(new Color(78, 66, 245));
 			else if(player.getHealth() >= 5)
-				g.setColor(Color.green);	
+				g.setColor(new Color(90, 245, 66));	
 			else if(player.getHealth() >= 2)
-				g.setColor(Color.yellow);
-			else g.setColor(Color.red);
+				g.setColor(new Color(245, 227, 66));
+			else g.setColor(new Color(245, 66, 66));
 			g.drawString(Integer.toString(player.getHealth()), 6,Display.HEIGHT - 25);
 //			g.fillRoundRect(6, Display.HEIGHT - 20 - player.getHealth()*20, 20, player.getHealth()*20,10,10);
 			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Heart.png"), 5, Display.HEIGHT - 20, null);
 			
 			
 			g.setColor(Color.white);
-			g.drawString(Integer.toString(GameScreen.weaponcount), 31,Display.HEIGHT - 25);	
-			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Lazer.png"), 30, Display.HEIGHT - 21, null);
+			g.drawString(Integer.toString(GameScreen.weaponcount), 37,Display.HEIGHT - 25);	
+			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Lazer.png"), 35, Display.HEIGHT - 21, null);
 		
 		blocks.draw(g);
 		level.draw(g);

@@ -1,6 +1,7 @@
 package OOP_Project.game_screen;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
@@ -48,26 +49,27 @@ public class Player implements KeyListener{
 		if(GameScreen.comboCheck)
 			g.drawImage(imageLoader.loadImage("/OOP_Project/images/Player2.png"),(int) xPos,(int) yPos, width, height, null);
 		else g.drawImage(imageLoader.loadImage("/OOP_Project/images/Player.png"),(int) xPos,(int) yPos, width, height, null);
-		if(GameScreen.comboCheck)
-			g.setColor(Color.red);
-		else {
+
 			if(GameScreen.combo <= 10)
-				g.setColor(Color.cyan);
+				g.setColor(new Color(221, 66, 245));
 			else if(GameScreen.combo <= 20)
-				g.setColor(Color.blue);
+				g.setColor(new Color(242, 66, 245));
 			else if(GameScreen.combo <= 30)
-				g.setColor(Color.MAGENTA);
-		}		
+				g.setColor(new Color(245, 66, 176));
+			
 		if(GameScreen.comboCheck)	
 		{
 //			g.fillRect(60, Display.HEIGHT - 20, 30*5, 3);
-			g.setColor(Color.red);
-			g.drawString("S", 30*5 + 10,Display.HEIGHT - 10 + 2) ;	
-			g.setColor(Color.orange);
-			g.drawString("S", 31*5 + 10,Display.HEIGHT - 10 + 2);
+			Font S = new Font("Upheaval TT (BRK)", Font.BOLD, 40);
+			g.setFont(S);
+			g.setColor(new Color(24, 97, 251));
+
+			g.drawString("S", 30*5 + 10,Display.HEIGHT - 10) ;	
+			g.setColor(new Color(254, 60, 50));
+			g.drawString("S", 31*5 + 10 - 2,Display.HEIGHT - 10 - 2);
 		}
 
-		else g.fillRect(60, Display.HEIGHT - 20, GameScreen.combo*5, 3);
+		else g.fillRect(80, Display.HEIGHT - 20, GameScreen.combo*5, 5);
 		
 		playerWeapons.draw(g);
 	}
