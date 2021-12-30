@@ -89,7 +89,7 @@ public class Player implements KeyListener{
 			playerWeapons.shootBullet(xPos, yPos);
 		}
 		
-		
+//checkcombo to make the code more 	
 		 if(GameScreen.combo >= 30)
 		{
 			 GameScreen.comboCheck = true;
@@ -122,7 +122,7 @@ public class Player implements KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
-		//key to move
+		//move
 		if(key == KeyEvent.VK_D || key == KeyEvent.VK_RIGHT){
 			right = true;
 		}

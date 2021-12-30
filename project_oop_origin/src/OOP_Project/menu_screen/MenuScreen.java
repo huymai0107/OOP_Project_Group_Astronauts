@@ -43,9 +43,6 @@ public class MenuScreen extends SuperStateMachine implements KeyListener {
 		int startWidth = g.getFontMetrics().stringWidth(start);
 		g.drawString(start, (Display.WIDTH/2)-(startWidth/2), (Display.HEIGHT/2)+75);
 		
-		
-
-
 	}
 
 	@Override

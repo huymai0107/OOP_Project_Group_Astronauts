@@ -88,7 +88,6 @@ public class SpriteAnimation {
 			currentSprite++;
 		} 
 	}
-
 	private void playAnimation() {
 		if (timer.isTimerReady(animationSpeed) && currentSprite != limit && !isDestoryAfterAnim()) {
 			play = false;

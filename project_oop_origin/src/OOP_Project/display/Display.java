@@ -149,7 +149,6 @@ public class Display extends Canvas implements Runnable {
 				g.fillOval(WIDTH-120,50, 50, 50);
 				
 // draw star
-				int nSpikes = 5;
 				int[] ctrX = {
 						632,
 						490,
@@ -213,8 +212,8 @@ public class Display extends Canvas implements Runnable {
 						306,
 						365,
 				};
-		        
-		        double RADIUS = 3;
+				int nSpikes = 4;
+		        double RADIUS = 4;
 		        double SPIKINESS = 0.5;
 		        int nPoints = nSpikes * 2 + 1;
 
