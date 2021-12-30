@@ -9,6 +9,8 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
+
 import javax.swing.JFrame;
 
 import OOP_Project.sound.Sound;
@@ -127,26 +129,121 @@ public class Display extends Canvas implements Runnable {
 			do {
 				
 				Graphics2D g = (Graphics2D) bs.getDrawGraphics();
-				g.setColor(new Color(20, 51, 71));
+				g.setColor(new Color(13, 25, 43));
 				g.fillRect(0, 0, WIDTH, HEIGHT);
 		
-				g.setColor(new Color(26, 97, 142));
+				g.setColor(new Color(27, 52, 89));
 				for(int i = 0; i <=5; i++)
-				g.fillOval(WIDTH - i*200, HEIGHT-250, 300, 300);
+				g.fillOval(WIDTH - i*200, HEIGHT-220, 400, 400);
 				
 				
-				g.setColor(new Color(52, 140, 196));				
+				g.setColor(new Color(35, 68, 117));				
 				for(int i = 0; i <=5; i++)
-					g.fillOval( WIDTH - i*200, HEIGHT*3/4, 300, 300);
-				g.setColor(new Color(255, 255, 120));
-				int baseline = 0;
-				
-				g.fillOval(WIDTH-120,baseline+50, 50, 50);
-				
+					g.fillOval( WIDTH - i*200,HEIGHT-150, 300, 300);
+				g.setColor(new Color(41, 81, 140));	
+				for(int i = 0; i <=10; i++)
+					g.fillOval( WIDTH - i*150, HEIGHT-70, 200, 200);
 				
 				
-//				g.setColor(new Color(223, 137, 36));
-//				g.fillOval(WIDTH-65,baseline - 100, 200, 200);
+				
+				
+				g.setColor(new Color(255, 255, 120));			
+				g.fillOval(WIDTH-120,50, 50, 50);
+				
+
+				int nSpikes = 5;
+				int[] ctrX = {
+						632,
+						490,
+						498,
+						426,
+						586,
+						80,
+						574,
+						559,
+						199,
+						161,
+						728,
+						372,
+						433,
+						447,
+						521,
+						641,
+						643,
+						641,
+						696,
+						685,
+						122,	
+						257,	
+						128,	
+						122,	
+						305,
+						251,	
+						2,	
+						282,	
+						235,	
+						49
+				};
+				int[] ctrY = {
+						43,	
+						259,	
+						177,	
+						357183,
+						44,	
+						115,	
+						123,	
+						287,	
+						177,
+						173,	
+						246,	
+						275,	
+						250,	
+						352,
+						52,	
+						113,	
+						352,	
+						285,	
+						320,
+						170,
+						193,
+						328,
+						176,
+						311,
+						127,
+						365,
+						81,
+						306,
+						365,
+				};
+
+				
+				
+
+		        
+		        double RADIUS = 3;
+		        double SPIKINESS = 0.5;
+		        int nPoints = nSpikes * 2 + 1;
+
+		        int xPoint[] = new int[nPoints];
+		        int yPoint[] = new int[nPoints];
+
+		        //generate star
+		        g.setColor(Color.white);
+		        for (int j = 0; j < ctrX.length-1; j++)
+		        {
+			        for (int i = 0; i < nPoints; i++)
+			        {
+			            double iRadius = (i % 2 == 0) ? RADIUS : (RADIUS * SPIKINESS);
+			            double angle = (i * 360.0) / (2*nSpikes);
+	
+			            xPoint[i] = (int) (ctrX[j] + iRadius * Math.cos(Math.toRadians(angle - 90)));
+			            yPoint[i] = (int) (ctrY[j] + iRadius * Math.sin(Math.toRadians(angle - 90)));
+			        }
+			        
+			        	g.fillPolygon(xPoint, yPoint, nPoints);
+		        }
+		    
+		
 				
 				
 				state.draw(g);
@@ -163,4 +260,14 @@ public class Display extends Canvas implements Runnable {
 
 }
 
+class Numbers {
+    Random ran;
+
+    public Numbers() {
+    }
+
+    public int random(int max, int min){
+    	return min +(int)(Math.random()*((max-min) + 1));
+    }
+}
 
