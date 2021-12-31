@@ -83,7 +83,7 @@ public class Display extends Canvas implements Runnable {
 	public Display() {
 		this.setSize(WIDTH, HEIGHT);
 		this.setFocusable(true);
-		backgroundMusic = new Sound("/OOP_Project/sounds/test.wav");
+		backgroundMusic = new Sound("/OOP_Project/sounds/backgroundMusic.wav");
 		state = new StateMachine(this);
 		state.setState((byte) 0); 
 	}
