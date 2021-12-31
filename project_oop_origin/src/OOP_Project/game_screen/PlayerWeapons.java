@@ -53,10 +53,10 @@ public class PlayerWeapons {
 			}
 			shootSound.play();
 			
-			//bullet follow to weapon count
+			//bullettype follow to weaponCount
 			if(GameScreen.comboCheck)
 			{
-				weapons.add(new LazerForCombo(xPos + 22, yPos + 15));
+				weapons.add(new LazerForCombo(xPos + 10, yPos + 15));
 			}
 			else {
 				if(GameScreen.weaponcount <= 0)
@@ -67,9 +67,9 @@ public class PlayerWeapons {
 					weapons.add(new Lazer(xPos + 22, yPos + 15));
 
 				else if(GameScreen.weaponcount == 2)
-					weapons.add(new LazerUpgraded(xPos + 22, yPos + 15));
+					weapons.add(new LazerUpgraded(xPos + 15, yPos + 15));
 				else if(GameScreen.weaponcount > 2)
-					weapons.add(new LazerLastForm(xPos + 22, yPos + 15));
+					weapons.add(new LazerLastForm(xPos + 10, yPos + 15));
 			}
 			
 			

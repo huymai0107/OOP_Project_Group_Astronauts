@@ -119,8 +119,7 @@ public class GameScreen extends SuperStateMachine implements KeyListener {
 			g.setColor(Color.RED);
 			g.drawString(gameOver, (Display.WIDTH/2)-(gameOverWidth/2)+2, (Display.HEIGHT/2)+2);
 		}
-		// finish stage pop-up
-		
+		// finish stage pop-up		
 		if (level.isCompleteBanner()) {
 			g.setFont(new Font("Upheaval TT (BRK)", Font.BOLD, 60));
 			g.setColor(Color.CYAN);

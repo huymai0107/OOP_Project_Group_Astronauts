@@ -89,7 +89,7 @@ public class Player implements KeyListener{
 			playerWeapons.shootBullet(xPos, yPos);
 		}
 		
-//checkcombo to make the code more 	
+//checkcombo to make the code more clearly	
 		 if(GameScreen.combo >= 30)
 		{
 			 GameScreen.comboCheck = true;
