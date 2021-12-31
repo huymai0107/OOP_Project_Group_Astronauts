@@ -115,20 +115,20 @@ public class Boss extends EnemyType{
 			itemWeaponTime = new Random().nextInt(30000);
 		}
 		
-		if(this.getRect().y >=				
-				blocks.getBlockHeight())
+		if(this.getRect().y >= blocks.getBlockHeight() - 150)						
 			player.setHealth(0);
 	}
+	
 
 	@Override
 	public void changeDirection(double delta) {
-		speed *= -1.0d;
+		speed *= -1.1d;
 		float test = (float) (delta * speed);
 		System.out.println(test);
 		enemySprite.setxPos(enemySprite.getxPos() - (delta * speed));
 		this.getRect().x = (int) enemySprite.getxPos();
 		
-		enemySprite.setyPos(enemySprite.getyPos() + (delta * 5));
+		enemySprite.setyPos(enemySprite.getyPos() + (delta * 10));
 		this.getRect().y = (int) enemySprite.getyPos();
 		
 

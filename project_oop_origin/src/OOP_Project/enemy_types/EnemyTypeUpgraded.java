@@ -102,15 +102,18 @@ public class EnemyTypeUpgraded extends EnemyType{
 			getBulletHandler().addBullet(new AddWeapon(getRect().x, getRect().y));
 			itemWeaponTime = new Random().nextInt(180000000);
 		}
+		if(this.getRect().y >= blocks.getBlockHeight() - 150)						
+			player.setHealth(0);
 	}
+	
 
 	@Override
 	public void changeDirection(double delta) {
-		speed *= -1.05d;
+		speed *= -1.1d;
 		enemySprite.setxPos(enemySprite.getxPos() - (delta * speed));
 		this.getRect().x = (int) enemySprite.getxPos();
 		
-		enemySprite.setyPos(enemySprite.getyPos() + (delta * 5));
+		enemySprite.setyPos(enemySprite.getyPos() + (delta * 15));
 		this.getRect().y = (int) enemySprite.getyPos();
 	}
 
