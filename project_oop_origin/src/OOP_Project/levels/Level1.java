@@ -155,6 +155,9 @@ public class Level1 implements SuperLevel{
 				enemies.add(e);
 			}		
 		}
+//		
+//		EnemyType e = new Boss(150 , 25 , 1 , 3, bulletHandler);
+//		enemies.add(e);	
 		
 	}
 	
