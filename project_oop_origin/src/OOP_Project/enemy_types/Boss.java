@@ -115,7 +115,7 @@ public class Boss extends EnemyType{
 			itemWeaponTime = new Random().nextInt(30000);
 		}
 		
-		if(this.getRect().y >= blocks.getBlockHeight() - 150)						
+		if(this.getRect().y >= blocks.getBlockHeight())						
 			player.setHealth(0);
 	}
 	

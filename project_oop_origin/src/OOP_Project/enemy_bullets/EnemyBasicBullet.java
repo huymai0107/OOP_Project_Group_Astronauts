@@ -58,8 +58,7 @@ public class EnemyBasicBullet extends EnemyWeaponType{
 	protected void wallCollide(BasicBlocks blocks) {
 		if (bullet == null) {
 			return;
-		}
-		
+		}		
 		for (int w = 0; w < blocks.wall.size(); w++) {
 			if(bullet.intersects(blocks.wall.get(w))) {
 				blocks.wall.remove(w);

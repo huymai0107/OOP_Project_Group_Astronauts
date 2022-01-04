@@ -5,7 +5,6 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -26,9 +25,9 @@ public class MenuScreen extends SuperStateMachine implements KeyListener {
 
 	@Override
 	public void update(double delta) {
-
 	}
 
+	
 	@Override
 	public void draw(Graphics2D g) {
 		g.setFont(tittleFont);
@@ -53,7 +52,6 @@ public class MenuScreen extends SuperStateMachine implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -72,7 +70,6 @@ public class MenuScreen extends SuperStateMachine implements KeyListener {
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
 	}
 
 }

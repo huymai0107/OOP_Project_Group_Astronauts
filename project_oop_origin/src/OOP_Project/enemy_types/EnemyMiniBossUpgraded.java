@@ -96,7 +96,7 @@ public class EnemyMiniBossUpgraded extends EnemyType{
 			itemWeaponTime = new Random().nextInt(70000);
 		}
 		
-		if(this.getRect().y >= blocks.getBlockHeight() - 150)						
+		if(this.getRect().y >= blocks.getBlockHeight())						
 			player.setHealth(0);
 	}
 

@@ -102,7 +102,7 @@ public class EnemyTypeUpgraded extends EnemyType{
 			getBulletHandler().addBullet(new AddWeapon(getRect().x, getRect().y));
 			itemWeaponTime = new Random().nextInt(180000000);
 		}
-		if(this.getRect().y >= blocks.getBlockHeight() - 150)						
+		if(this.getRect().y >= blocks.getBlockHeight())						
 			player.setHealth(0);
 	}
 	
